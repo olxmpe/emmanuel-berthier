@@ -1,0 +1,63 @@
+@import url("https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap");
+
+:root {
+  --font-family-text: "jost", sans-serif;
+  --font-family-title: "Libre Baskerville", serif;
+  --color-black: #000000;
+  --color-light-black: #3d3d3d;
+  --color-yellow: #eac082;
+  --color-light-background: #f1eee3;
+  --color-blue: #82b8ea;
+
+  --z-index-nav: 5;
+  --z-index-slider: 4;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  font-family: var(--font-family-text);
+  font-weight: 200;
+  font-size: 14px;
+}
+
+h1 {
+  font-family: var(--font-family-title);
+  font-size: 40px;
+  color: var(--color-light-black);
+  text-transform: uppercase;
+  margin: 60px 0;
+}
+
+h2,
+.title {
+  font-family: var(--font-family-title);
+  font-size: 2rem;
+  color: var(--color-light-black);
+}
+
+a {
+  color: var(--color-yellow);
+}
+
+.link {
+  cursor: pointer;
+
+  &:not(.title) {
+    color: var(--color-black);
+  }
+  &:hover,
+  &:active {
+    color: var(--color-yellow);
+  }
+}
+
+svg {
+  vertical-align: sub;
+}
+
+.flex {
+  display: flex;
+}
