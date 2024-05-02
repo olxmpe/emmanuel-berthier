@@ -23,11 +23,16 @@ defineProps(
     :loop="true"
     :autoplay="{ delay: 5000 }"
     :style="{ height: '100vh' }"
+    :speed="10"
     class="swiper"
     :effect="'fade'"
   >
     <SwiperSlide v-for="(image, index) in slice.items" :key="index">
-      <PrismicImage :field="image.slider_image" class="swiper-image" />
+      <PrismicImage :field="image.slider_image" class="swiper-image desktop" />
+      <PrismicImage
+        :field="image.slider_image.mobile"
+        class="swiper-image mobile"
+      />
     </SwiperSlide>
   </Swiper>
 </template>

@@ -9,8 +9,8 @@
       "siteTitle": {
         "type": "StructuredText",
         "config": {
-          "label": "Site Title",
-          "placeholder": "Title of the site",
+          "label": "Titre du site",
+          "placeholder": "",
           "allowTargetBlank": false,
           "single": "heading1"
         }

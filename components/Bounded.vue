@@ -16,7 +16,10 @@ defineProps({
 </template>
 <style scoped lang="scss">
 .bounded {
-  margin: auto;
   padding: 10rem 10rem;
+
+  @media screen and (max-width: 800px) {
+    padding: 3rem;
+  }
 }
 </style>

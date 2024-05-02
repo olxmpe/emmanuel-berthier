@@ -15,9 +15,18 @@
         "slider_image": {
           "type": "Image",
           "config": {
-            "label": "slider image",
-            "constraint": {},
-            "thumbnails": []
+            "label": "Photo",
+            "constraint": {
+              "width": 2560,
+              "height": 1400
+            },
+            "thumbnails": [
+              {
+                "name": "mobile",
+                "width": 720,
+                "height": 1280
+              }
+            ]
           }
         }
       },

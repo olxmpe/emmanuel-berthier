@@ -12,17 +12,25 @@
       "description": "Default",
       "imageUrl": "",
       "primary": {
+        "image": {
+          "type": "Image",
+          "config": {
+            "label": "Photo",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
         "display_title": {
           "type": "Text",
           "config": {
-            "label": "display title",
+            "label": "Titre",
             "placeholder": ""
           }
         },
         "text_block": {
           "type": "StructuredText",
           "config": {
-            "label": "Text block",
+            "label": "Texte",
             "placeholder": "",
             "allowTargetBlank": true,
             "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
@@ -31,7 +39,7 @@
         "logo_left": {
           "type": "Image",
           "config": {
-            "label": "Left logo",
+            "label": "Logo de gauche",
             "constraint": {},
             "thumbnails": []
           }
@@ -39,7 +47,7 @@
         "logo_center": {
           "type": "Image",
           "config": {
-            "label": "Center logo",
+            "label": "Logo du milieu",
             "constraint": {},
             "thumbnails": []
           }
@@ -47,15 +55,7 @@
         "logo_right": {
           "type": "Image",
           "config": {
-            "label": "Right logo",
-            "constraint": {},
-            "thumbnails": []
-          }
-        },
-        "image": {
-          "type": "Image",
-          "config": {
-            "label": "image",
+            "label": "Logo de droite",
             "constraint": {},
             "thumbnails": []
           }
@@ -65,7 +65,7 @@
         "country": {
           "type": "Text",
           "config": {
-            "label": "country",
+            "label": "Pays",
             "placeholder": ""
           }
         },
@@ -79,21 +79,21 @@
         "start": {
           "type": "Date",
           "config": {
-            "label": "Start",
+            "label": "Début du voyage",
             "placeholder": ""
           }
         },
         "end": {
           "type": "Date",
           "config": {
-            "label": "End",
+            "label": "Fin du voyage",
             "placeholder": ""
           }
         },
         "remaining": {
           "type": "Number",
           "config": {
-            "label": "Places restantes",
+            "label": "Nombre de places restantes",
             "placeholder": ""
           }
         }
@@ -107,28 +107,28 @@
       "description": "Default",
       "imageUrl": "",
       "primary": {
+        "image": {
+          "type": "Image",
+          "config": {
+            "label": "Photo",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
         "display_title": {
           "type": "Text",
           "config": {
-            "label": "display title",
+            "label": "Titre",
             "placeholder": ""
           }
         },
         "text_block": {
           "type": "StructuredText",
           "config": {
-            "label": "Text block",
+            "label": "Texte",
             "placeholder": "",
             "allowTargetBlank": true,
             "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
-          }
-        },
-        "image": {
-          "type": "Image",
-          "config": {
-            "label": "image",
-            "constraint": {},
-            "thumbnails": []
           }
         }
       },

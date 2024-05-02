@@ -1,17 +1,23 @@
 @import url("https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=STIX+Two+Text:ital,wght@0,400..700;1,400..700&display=swap");
 
 :root {
   --font-family-text: "jost", sans-serif;
   --font-family-title: "Libre Baskerville", serif;
+  --font-family-title-light: "STIX Two Text", serif;
   --color-black: #000000;
   --color-light-black: #3d3d3d;
   --color-yellow: #eac082;
   --color-light-background: #f1eee3;
+  --color-grey-background: #f3f4f3;
   --color-blue: #82b8ea;
 
-  --z-index-nav: 5;
-  --z-index-slider: 4;
+  --default-spacing: 60px;
+
+  --z-index-top: 5;
+  --z-index-nav: 4;
+  --z-index-slider: 3;
 }
 
 * {
@@ -28,7 +34,7 @@ h1 {
   font-size: 40px;
   color: var(--color-light-black);
   text-transform: uppercase;
-  margin: 60px 0;
+  margin: var(--default-spacing) 0;
 }
 
 h2,
@@ -60,4 +66,21 @@ svg {
 
 .flex {
   display: flex;
+}
+
+strong,
+font-semibold {
+  font-weight: 350;
+}
+
+.desktop {
+  @media screen and (max-width: 800px) {
+    display: none;
+  }
+}
+
+.mobile {
+  @media screen and (min-width: 800px) {
+    display: none;
+  }
 }

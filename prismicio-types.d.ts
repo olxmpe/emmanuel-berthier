@@ -5,11 +5,43 @@ import type * as prismic from "@prismicio/client";
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
 /**
- * Item in *Navigation → Links*
+ * Content for Categorie documents
+ */
+interface CategoryDocumentData {
+  /**
+   * Image d'entête field in *Categorie*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: category.image
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+}
+
+/**
+ * Categorie document from Prismic
+ *
+ * - **API ID**: `category`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type CategoryDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<
+    Simplify<CategoryDocumentData>,
+    "category",
+    Lang
+  >;
+
+/**
+ * Item in *Navigation → Items du menu*
  */
 export interface NavigationDocumentDataLinksItem {
   /**
-   * label field in *Navigation → Links*
+   * Libellé field in *Navigation → Items du menu*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
@@ -19,7 +51,7 @@ export interface NavigationDocumentDataLinksItem {
   label: prismic.KeyTextField;
 
   /**
-   * Link field in *Navigation → Links*
+   * Lien field in *Navigation → Items du menu*
    *
    * - **Field Type**: Link
    * - **Placeholder**: Link for navigation item
@@ -29,7 +61,7 @@ export interface NavigationDocumentDataLinksItem {
   link: prismic.LinkField;
 
   /**
-   * main menu field in *Navigation → Links*
+   * Élément du menu principal field in *Navigation → Items du menu*
    *
    * - **Field Type**: Boolean
    * - **Placeholder**: *None*
@@ -45,7 +77,7 @@ export interface NavigationDocumentDataLinksItem {
  */
 interface NavigationDocumentData {
   /**
-   * Links field in *Navigation*
+   * Items du menu field in *Navigation*
    *
    * - **Field Type**: Group
    * - **Placeholder**: *None*
@@ -72,14 +104,14 @@ export type NavigationDocument<Lang extends string = string> =
     Lang
   >;
 
-type PageDocumentDataSlicesSlice = ContentPageSlice | HeroSlice;
+type PageDocumentDataSlicesSlice = GallerieSlice | ContentPageSlice | HeroSlice;
 
 /**
  * Content for Page documents
  */
 interface PageDocumentData {
   /**
-   * Title field in *Page*
+   * Titre field in *Page*
    *
    * - **Field Type**: Title
    * - **Placeholder**: *None*
@@ -129,10 +161,10 @@ export type PageDocument<Lang extends string = string> =
  */
 interface SettingsDocumentData {
   /**
-   * Site Title field in *Settings*
+   * Titre du site field in *Settings*
    *
    * - **Field Type**: Title
-   * - **Placeholder**: Title of the site
+   * - **Placeholder**: *None*
    * - **API ID Path**: settings.siteTitle
    * - **Tab**: Main
    * - **Documentation**: https://prismic.io/docs/field#rich-text-title
@@ -157,6 +189,7 @@ export type SettingsDocument<Lang extends string = string> =
   >;
 
 export type AllDocumentTypes =
+  | CategoryDocument
   | NavigationDocument
   | PageDocument
   | SettingsDocument;
@@ -166,7 +199,17 @@ export type AllDocumentTypes =
  */
 export interface ContentPageSliceDefaultPrimary {
   /**
-   * display title field in *ContentPage → Primary*
+   * Photo field in *ContentPage → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: content_page.primary.image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
+   * Titre field in *ContentPage → Primary*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
@@ -176,7 +219,7 @@ export interface ContentPageSliceDefaultPrimary {
   display_title: prismic.KeyTextField;
 
   /**
-   * Text block field in *ContentPage → Primary*
+   * Texte field in *ContentPage → Primary*
    *
    * - **Field Type**: Rich Text
    * - **Placeholder**: *None*
@@ -186,7 +229,7 @@ export interface ContentPageSliceDefaultPrimary {
   text_block: prismic.RichTextField;
 
   /**
-   * Left logo field in *ContentPage → Primary*
+   * Logo de gauche field in *ContentPage → Primary*
    *
    * - **Field Type**: Image
    * - **Placeholder**: *None*
@@ -196,7 +239,7 @@ export interface ContentPageSliceDefaultPrimary {
   logo_left: prismic.ImageField<never>;
 
   /**
-   * Center logo field in *ContentPage → Primary*
+   * Logo du milieu field in *ContentPage → Primary*
    *
    * - **Field Type**: Image
    * - **Placeholder**: *None*
@@ -206,7 +249,7 @@ export interface ContentPageSliceDefaultPrimary {
   logo_center: prismic.ImageField<never>;
 
   /**
-   * Right logo field in *ContentPage → Primary*
+   * Logo de droite field in *ContentPage → Primary*
    *
    * - **Field Type**: Image
    * - **Placeholder**: *None*
@@ -214,16 +257,6 @@ export interface ContentPageSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/field#image
    */
   logo_right: prismic.ImageField<never>;
-
-  /**
-   * image field in *ContentPage → Primary*
-   *
-   * - **Field Type**: Image
-   * - **Placeholder**: *None*
-   * - **API ID Path**: content_page.primary.image
-   * - **Documentation**: https://prismic.io/docs/field#image
-   */
-  image: prismic.ImageField<never>;
 }
 
 /**
@@ -231,7 +264,7 @@ export interface ContentPageSliceDefaultPrimary {
  */
 export interface ContentPageSliceDefaultItem {
   /**
-   * country field in *ContentPage → Items*
+   * Pays field in *ContentPage → Items*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
@@ -251,7 +284,7 @@ export interface ContentPageSliceDefaultItem {
   description: prismic.KeyTextField;
 
   /**
-   * Start field in *ContentPage → Items*
+   * Début du voyage field in *ContentPage → Items*
    *
    * - **Field Type**: Date
    * - **Placeholder**: *None*
@@ -261,7 +294,7 @@ export interface ContentPageSliceDefaultItem {
   start: prismic.DateField;
 
   /**
-   * End field in *ContentPage → Items*
+   * Fin du voyage field in *ContentPage → Items*
    *
    * - **Field Type**: Date
    * - **Placeholder**: *None*
@@ -271,7 +304,7 @@ export interface ContentPageSliceDefaultItem {
   end: prismic.DateField;
 
   /**
-   * Places restantes field in *ContentPage → Items*
+   * Nombre de places restantes field in *ContentPage → Items*
    *
    * - **Field Type**: Number
    * - **Placeholder**: *None*
@@ -299,7 +332,17 @@ export type ContentPageSliceDefault = prismic.SharedSliceVariation<
  */
 export interface ContentPageSliceImageLeftPrimary {
   /**
-   * display title field in *ContentPage → Primary*
+   * Photo field in *ContentPage → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: content_page.primary.image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
+   * Titre field in *ContentPage → Primary*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
@@ -309,7 +352,7 @@ export interface ContentPageSliceImageLeftPrimary {
   display_title: prismic.KeyTextField;
 
   /**
-   * Text block field in *ContentPage → Primary*
+   * Texte field in *ContentPage → Primary*
    *
    * - **Field Type**: Rich Text
    * - **Placeholder**: *None*
@@ -317,16 +360,6 @@ export interface ContentPageSliceImageLeftPrimary {
    * - **Documentation**: https://prismic.io/docs/field#rich-text-title
    */
   text_block: prismic.RichTextField;
-
-  /**
-   * image field in *ContentPage → Primary*
-   *
-   * - **Field Type**: Image
-   * - **Placeholder**: *None*
-   * - **API ID Path**: content_page.primary.image
-   * - **Documentation**: https://prismic.io/docs/field#image
-   */
-  image: prismic.ImageField<never>;
 }
 
 /**
@@ -362,18 +395,131 @@ export type ContentPageSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Primary content in *Gallerie → Primary*
+ */
+export interface GallerieSliceDefaultPrimary {
+  /**
+   * Catégorie field in *Gallerie → Primary*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: gallerie.primary.category
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  category: prismic.ContentRelationshipField<"category">;
+}
+
+/**
+ * Primary content in *Gallerie → Items*
+ */
+export interface GallerieSliceDefaultItem {
+  /**
+   * Photo field in *Gallerie → Items*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: gallerie.items[].photo
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  photo: prismic.ImageField<never>;
+}
+
+/**
+ * Default variation for Gallerie Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type GallerieSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<GallerieSliceDefaultPrimary>,
+  Simplify<GallerieSliceDefaultItem>
+>;
+
+/**
+ * Primary content in *Gallerie → Primary*
+ */
+export interface GallerieSlicePrintPrimary {
+  /**
+   * Titre field in *Gallerie → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: gallerie.primary.display_title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  display_title: prismic.KeyTextField;
+
+  /**
+   * Texte field in *Gallerie → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: gallerie.primary.text
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  text: prismic.RichTextField;
+}
+
+/**
+ * Primary content in *Gallerie → Items*
+ */
+export interface GallerieSlicePrintItem {
+  /**
+   * Photo field in *Gallerie → Items*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: gallerie.items[].photo
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  photo: prismic.ImageField<never>;
+}
+
+/**
+ * Print variation for Gallerie Slice
+ *
+ * - **API ID**: `print`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type GallerieSlicePrint = prismic.SharedSliceVariation<
+  "print",
+  Simplify<GallerieSlicePrintPrimary>,
+  Simplify<GallerieSlicePrintItem>
+>;
+
+/**
+ * Slice variation for *Gallerie*
+ */
+type GallerieSliceVariation = GallerieSliceDefault | GallerieSlicePrint;
+
+/**
+ * Gallerie Shared Slice
+ *
+ * - **API ID**: `gallerie`
+ * - **Description**: Gallerie
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type GallerieSlice = prismic.SharedSlice<
+  "gallerie",
+  GallerieSliceVariation
+>;
+
+/**
  * Primary content in *Hero → Items*
  */
 export interface HeroSliceDefaultItem {
   /**
-   * slider image field in *Hero → Items*
+   * Photo field in *Hero → Items*
    *
    * - **Field Type**: Image
    * - **Placeholder**: *None*
    * - **API ID Path**: hero.items[].slider_image
    * - **Documentation**: https://prismic.io/docs/field#image
    */
-  slider_image: prismic.ImageField<never>;
+  slider_image: prismic.ImageField<"mobile">;
 }
 
 /**
@@ -413,6 +559,8 @@ declare module "@prismicio/client" {
 
   namespace Content {
     export type {
+      CategoryDocument,
+      CategoryDocumentData,
       NavigationDocument,
       NavigationDocumentData,
       NavigationDocumentDataLinksItem,
@@ -429,6 +577,14 @@ declare module "@prismicio/client" {
       ContentPageSliceVariation,
       ContentPageSliceDefault,
       ContentPageSliceImageLeft,
+      GallerieSlice,
+      GallerieSliceDefaultPrimary,
+      GallerieSliceDefaultItem,
+      GallerieSlicePrintPrimary,
+      GallerieSlicePrintItem,
+      GallerieSliceVariation,
+      GallerieSliceDefault,
+      GallerieSlicePrint,
       HeroSlice,
       HeroSliceDefaultItem,
       HeroSliceVariation,

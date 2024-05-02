@@ -17,6 +17,7 @@
   "dependencies": {
     "@fontsource/inter": "^5.0.17",
     "@prismicio/client": "^7.4.1",
+    "luxon": "^3.4.4",
     "sass": "^1.76.0",
     "swiper": "^11.1.1"
   },
@@ -26,6 +27,7 @@
     "@nuxtjs/prismic": "^3.2.1",
     "@slicemachine/adapter-nuxt": "^0.3.38",
     "@tailwindcss/aspect-ratio": "^0.4.2",
+    "@types/luxon": "^3.4.2",
     "concurrently": "^8.2.2",
     "eslint": "^8.57.0",
     "nuxt": "^3.11.1",

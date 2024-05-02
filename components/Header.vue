@@ -40,12 +40,16 @@ const mainNavigationItems = navigation.value?.data.links.filter(
         </div>
       </div>
 
-      <img class="logo" src="./../assets/logo-black.png" />
+      <RouterLink to="/">
+        <img class="logo" src="./../assets/logo-black.png" />
+      </RouterLink>
     </div>
   </div>
   <div class="burger-menu" @click="isFullwidthNavOpen = true">
     <div class="menu">
-      <img class="logo" src="./../assets/logo-black.png" />
+      <RouterLink to="/">
+        <img class="logo" src="./../assets/logo-black.png" />
+      </RouterLink>
       <BurgerIcon />
     </div>
   </div>
@@ -77,7 +81,8 @@ const mainNavigationItems = navigation.value?.data.links.filter(
   .menu {
     display: flex;
     align-items: center;
-    padding: 1rem 5rem;
+    padding: 2rem 5rem;
+    height: 150px;
 
     .menu-items {
       display: flex;
@@ -87,13 +92,32 @@ const mainNavigationItems = navigation.value?.data.links.filter(
       height: 2rem;
     }
 
+    svg {
+      max-width: 1rem;
+    }
+
     &.secondary {
       justify-content: flex-end;
       align-items: baseline;
+      background: linear-gradient(
+        to bottom,
+        var(--color-grey-background) 40%,
+        #ffffff00 100%
+      );
     }
 
     &.main {
       justify-content: space-between;
+      align-items: flex-end;
+      background: linear-gradient(
+        to top,
+        var(--color-grey-background) 40%,
+        #ffffff00 100%
+      );
+
+      a {
+        z-index: var(--z-index-top);
+      }
     }
   }
 }
@@ -116,5 +140,9 @@ const mainNavigationItems = navigation.value?.data.links.filter(
       height: 1rem;
     }
   }
+}
+
+.router-link-active {
+  color: var(--color-yellow);
 }
 </style>
