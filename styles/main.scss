@@ -14,6 +14,7 @@
   --color-blue: #82b8ea;
 
   --default-spacing: 60px;
+  --menu-height: 100px;
 
   --z-index-top: 5;
   --z-index-nav: 4;
@@ -26,7 +27,7 @@
   text-decoration: none;
   font-family: var(--font-family-text);
   font-weight: 200;
-  font-size: 14px;
+  font-size: 12px;
 }
 
 h1 {
@@ -82,5 +83,23 @@ font-semibold {
 .mobile {
   @media screen and (min-width: 800px) {
     display: none;
+  }
+}
+
+.grid {
+  z-index: 1000;
+}
+
+.bounded {
+  @media screen and (max-width: 800px) {
+    padding: var(--default-spacing) 10%;
+  }
+
+  @media screen and (min-width: 800px) {
+    padding: var(--menu-height) 10%;
+
+    &.large {
+      padding: var(--menu-height) 20%;
+    }
   }
 }

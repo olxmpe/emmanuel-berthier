@@ -4,6 +4,8 @@ import type * as prismic from "@prismicio/client";
 
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
+type CategoryDocumentDataSlicesSlice = GallerieSlice;
+
 /**
  * Content for Categorie documents
  */
@@ -18,6 +20,17 @@ interface CategoryDocumentData {
    * - **Documentation**: https://prismic.io/docs/field#image
    */
   image: prismic.ImageField<never>;
+
+  /**
+   * Slice Zone field in *Categorie*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: category.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<CategoryDocumentDataSlicesSlice>;
 }
 
 /**
@@ -104,14 +117,18 @@ export type NavigationDocument<Lang extends string = string> =
     Lang
   >;
 
-type PageDocumentDataSlicesSlice = GallerieSlice | ContentPageSlice | HeroSlice;
+type PageDocumentDataSlicesSlice =
+  | CategoriesSlice
+  | GallerieSlice
+  | ContentPageSlice
+  | HeroSlice;
 
 /**
  * Content for Page documents
  */
 interface PageDocumentData {
   /**
-   * Titre field in *Page*
+   * Titre SEO field in *Page*
    *
    * - **Field Type**: Title
    * - **Placeholder**: *None*
@@ -193,6 +210,51 @@ export type AllDocumentTypes =
   | NavigationDocument
   | PageDocument
   | SettingsDocument;
+
+/**
+ * Primary content in *Categories → Items*
+ */
+export interface CategoriesSliceDefaultItem {
+  /**
+   * Catégorie field in *Categories → Items*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: categories.items[].categorie
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  categorie: prismic.ContentRelationshipField<"category">;
+}
+
+/**
+ * Default variation for Categories Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CategoriesSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Record<string, never>,
+  Simplify<CategoriesSliceDefaultItem>
+>;
+
+/**
+ * Slice variation for *Categories*
+ */
+type CategoriesSliceVariation = CategoriesSliceDefault;
+
+/**
+ * Categories Shared Slice
+ *
+ * - **API ID**: `categories`
+ * - **Description**: Categories
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CategoriesSlice = prismic.SharedSlice<
+  "categories",
+  CategoriesSliceVariation
+>;
 
 /**
  * Primary content in *ContentPage → Primary*
@@ -561,6 +623,7 @@ declare module "@prismicio/client" {
     export type {
       CategoryDocument,
       CategoryDocumentData,
+      CategoryDocumentDataSlicesSlice,
       NavigationDocument,
       NavigationDocumentData,
       NavigationDocumentDataLinksItem,
@@ -570,6 +633,10 @@ declare module "@prismicio/client" {
       SettingsDocument,
       SettingsDocumentData,
       AllDocumentTypes,
+      CategoriesSlice,
+      CategoriesSliceDefaultItem,
+      CategoriesSliceVariation,
+      CategoriesSliceDefault,
       ContentPageSlice,
       ContentPageSliceDefaultPrimary,
       ContentPageSliceDefaultItem,

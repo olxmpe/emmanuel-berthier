@@ -16,7 +16,7 @@
       "title": {
         "type": "StructuredText",
         "config": {
-          "label": "Titre",
+          "label": "Titre SEO",
           "placeholder": "",
           "allowTargetBlank": true,
           "single": "heading1"
@@ -35,6 +35,9 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "categories": {
+              "type": "SharedSlice"
+            },
             "gallerie": {
               "type": "SharedSlice"
             },

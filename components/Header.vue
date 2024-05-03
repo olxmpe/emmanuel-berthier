@@ -82,7 +82,7 @@ const mainNavigationItems = navigation.value?.data.links.filter(
     display: flex;
     align-items: center;
     padding: 2rem 5rem;
-    height: 150px;
+    height: 100px;
 
     .menu-items {
       display: flex;

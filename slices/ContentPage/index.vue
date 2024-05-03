@@ -25,58 +25,59 @@ onMounted(() => {
 </script>
 
 <template>
-  <Bounded>
-    <div class="container" :class="{ reversed: slice.variation === 'default' }">
-      <h1 v-if="slice.variation === 'imageLeft'" class="mobile">
+  <div
+    class="container bounded"
+    :class="{ reversed: slice.variation === 'default' }"
+  >
+    <h1 v-if="slice.variation === 'imageLeft'" class="mobile">
+      {{ slice.primary.display_title }}
+    </h1>
+
+    <div class="image">
+      <PrismicImage :field="slice.primary.image" />
+    </div>
+    <div class="text">
+      <h1 :class="{ desktop: slice.variation === 'imageLeft' }">
         {{ slice.primary.display_title }}
       </h1>
-
-      <div class="image">
-        <PrismicImage :field="slice.primary.image" />
+      <PrismicRichText :field="slice.primary.text_block" />
+      <div class="flex logos" v-if="slice.variation === 'default'">
+        <PrismicImage :field="slice.primary.logo_left" />
+        <PrismicImage :field="slice.primary.logo_center" />
+        <PrismicImage :field="slice.primary.logo_right" />
       </div>
-      <div class="text">
-        <h1 :class="{ desktop: slice.variation === 'imageLeft' }">
-          {{ slice.primary.display_title }}
-        </h1>
-        <PrismicRichText :field="slice.primary.text_block" />
-        <div class="flex logos" v-if="slice.variation === 'default'">
-          <PrismicImage :field="slice.primary.logo_left" />
-          <PrismicImage :field="slice.primary.logo_center" />
-          <PrismicImage :field="slice.primary.logo_right" />
-        </div>
-        <div v-if="slice.items">
-          <div v-for="country in countries" class="list">
-            <p class="country">
-              {{ country }}
-            </p>
-            <div class="list-items">
-              <div
-                v-for="item in slice.items.filter(
-                  (item) => item.country === country
-                )"
-              >
-                <p>{{ item.description }}</p>
-                <p>
-                  Du {{ formatDate(item.start as string) }} au
-                  {{ formatDate(item.end as string) }} -
-                  <span v-if="item.remaining === 0" class="full">Complet</span>
-                  <span v-else-if="item.remaining === 1" class="available">
-                    {{ item.remaining }} place restante
-                  </span>
-                  <span v-else class="available"
-                    >{{ item.remaining }} places restantes</span
-                  >
-                </p>
-              </div>
+      <div v-if="slice.items">
+        <div v-for="country in countries" class="list">
+          <p class="country">
+            {{ country }}
+          </p>
+          <div class="list-items">
+            <div
+              v-for="item in slice.items.filter(
+                (item) => item.country === country
+              )"
+            >
+              <p>{{ item.description }}</p>
+              <p>
+                Du {{ formatDate(item.start as string) }} au
+                {{ formatDate(item.end as string) }} -
+                <span v-if="item.remaining === 0" class="full">Complet</span>
+                <span v-else-if="item.remaining === 1" class="available">
+                  {{ item.remaining }} place restante
+                </span>
+                <span v-else class="available"
+                  >{{ item.remaining }} places restantes</span
+                >
+              </p>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </Bounded>
+  </div>
 </template>
 <style scoped lang="scss">
-@media screen and (min-width: 800px) {
+@media screen and (min-width: 900px) {
   .container {
     display: flex;
     justify-content: center;
@@ -101,14 +102,13 @@ onMounted(() => {
     }
 
     .image {
-      width: 40%;
+      width: 50%;
       z-index: var(--z-index-top);
-      height: calc(100vh - 300px);
+      height: calc(100vh - var(--menu-height) * 2);
 
       img {
+        max-height: calc(100vh - var(--menu-height) * 2);
         position: fixed;
-        height: calc(100% - 300px);
-        width: auto;
       }
     }
 
@@ -120,7 +120,7 @@ onMounted(() => {
   }
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 900px) {
   .container {
     display: block;
   }

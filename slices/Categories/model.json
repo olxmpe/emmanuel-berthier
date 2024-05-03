@@ -1,0 +1,29 @@
+{
+  "id": "categories",
+  "type": "SharedSlice",
+  "name": "Categories",
+  "description": "Categories",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {},
+      "items": {
+        "categorie": {
+          "type": "Link",
+          "config": {
+            "label": "Catégorie",
+            "select": "document",
+            "customtypes": [
+              "category"
+            ]
+          }
+        }
+      }
+    }
+  ]
+}
