@@ -1,7 +1,7 @@
 {
   "id": "gallerie",
   "type": "SharedSlice",
-  "name": "Gallerie",
+  "name": "Gallery",
   "description": "Gallerie",
   "variations": [
     {
@@ -17,9 +17,7 @@
           "config": {
             "label": "Catégorie",
             "select": "document",
-            "customtypes": [
-              "category"
-            ]
+            "customtypes": ["category"]
           }
         }
       },

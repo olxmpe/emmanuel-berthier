@@ -457,11 +457,11 @@ export type ContentPageSlice = prismic.SharedSlice<
 >;
 
 /**
- * Primary content in *Gallerie → Primary*
+ * Primary content in *Gallery → Primary*
  */
 export interface GallerieSliceDefaultPrimary {
   /**
-   * Catégorie field in *Gallerie → Primary*
+   * Catégorie field in *Gallery → Primary*
    *
    * - **Field Type**: Content Relationship
    * - **Placeholder**: *None*
@@ -472,11 +472,11 @@ export interface GallerieSliceDefaultPrimary {
 }
 
 /**
- * Primary content in *Gallerie → Items*
+ * Primary content in *Gallery → Items*
  */
 export interface GallerieSliceDefaultItem {
   /**
-   * Photo field in *Gallerie → Items*
+   * Photo field in *Gallery → Items*
    *
    * - **Field Type**: Image
    * - **Placeholder**: *None*
@@ -487,7 +487,7 @@ export interface GallerieSliceDefaultItem {
 }
 
 /**
- * Default variation for Gallerie Slice
+ * Default variation for Gallery Slice
  *
  * - **API ID**: `default`
  * - **Description**: Default
@@ -500,11 +500,11 @@ export type GallerieSliceDefault = prismic.SharedSliceVariation<
 >;
 
 /**
- * Primary content in *Gallerie → Primary*
+ * Primary content in *Gallery → Primary*
  */
 export interface GallerieSlicePrintPrimary {
   /**
-   * Titre field in *Gallerie → Primary*
+   * Titre field in *Gallery → Primary*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
@@ -514,7 +514,7 @@ export interface GallerieSlicePrintPrimary {
   display_title: prismic.KeyTextField;
 
   /**
-   * Texte field in *Gallerie → Primary*
+   * Texte field in *Gallery → Primary*
    *
    * - **Field Type**: Rich Text
    * - **Placeholder**: *None*
@@ -525,11 +525,11 @@ export interface GallerieSlicePrintPrimary {
 }
 
 /**
- * Primary content in *Gallerie → Items*
+ * Primary content in *Gallery → Items*
  */
 export interface GallerieSlicePrintItem {
   /**
-   * Photo field in *Gallerie → Items*
+   * Photo field in *Gallery → Items*
    *
    * - **Field Type**: Image
    * - **Placeholder**: *None*
@@ -540,7 +540,7 @@ export interface GallerieSlicePrintItem {
 }
 
 /**
- * Print variation for Gallerie Slice
+ * Print variation for Gallery Slice
  *
  * - **API ID**: `print`
  * - **Description**: Default
@@ -553,12 +553,12 @@ export type GallerieSlicePrint = prismic.SharedSliceVariation<
 >;
 
 /**
- * Slice variation for *Gallerie*
+ * Slice variation for *Gallery*
  */
 type GallerieSliceVariation = GallerieSliceDefault | GallerieSlicePrint;
 
 /**
- * Gallerie Shared Slice
+ * Gallery Shared Slice
  *
  * - **API ID**: `gallerie`
  * - **Description**: Gallerie
