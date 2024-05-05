@@ -18,7 +18,8 @@
 
   --z-index-top: 5;
   --z-index-nav: 4;
-  --z-index-slider: 3;
+  --z-index-nav-background: 3;
+  --z-index-slider: 2;
 }
 
 * {
@@ -28,6 +29,11 @@
   font-family: var(--font-family-text);
   font-weight: 200;
   font-size: 12px;
+}
+
+html,
+body {
+  background: var(--color-grey-background);
 }
 
 h1 {

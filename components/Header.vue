@@ -93,27 +93,22 @@ const mainNavigationItems = navigation.value?.data.links.filter(
     }
 
     svg {
-      max-width: 1rem;
+      max-width: 1.5rem;
+      max-height: 1.5rem;
+
+      &:hover {
+        fill: var(--color-yellow);
+      }
     }
 
     &.secondary {
       justify-content: flex-end;
       align-items: baseline;
-      background: linear-gradient(
-        to bottom,
-        var(--color-grey-background) 40%,
-        #ffffff00 100%
-      );
     }
 
     &.main {
       justify-content: space-between;
       align-items: flex-end;
-      background: linear-gradient(
-        to top,
-        var(--color-grey-background) 40%,
-        #ffffff00 100%
-      );
 
       a {
         z-index: var(--z-index-top);

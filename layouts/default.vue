@@ -1,5 +1,8 @@
 <template>
   <div class="app-container">
+    <HeaderBackground
+      v-if="$route.path === '/travel' || $route.path === '/about'"
+    />
     <template v-if="$route.path === '/'">
       <HomeHeader />
     </template>
@@ -9,8 +12,3 @@
     <slot />
   </div>
 </template>
-<style scoped lang="scss">
-.app-container {
-  background: var(--color-grey-background);
-}
-</style>
