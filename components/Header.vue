@@ -117,26 +117,6 @@ const mainNavigationItems = navigation.value?.data.links.filter(
   }
 }
 
-.burger-menu {
-  @media screen and (min-width: 800px) {
-    display: none;
-  }
-
-  width: 100%;
-  position: fixed;
-  top: 0;
-
-  .menu {
-    padding: 2rem 1.5rem;
-    display: flex;
-    justify-content: space-between;
-
-    .logo {
-      height: 1rem;
-    }
-  }
-}
-
 .router-link-active {
   color: var(--color-yellow);
 }

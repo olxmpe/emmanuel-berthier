@@ -9,7 +9,7 @@
   z-index: var(--z-index-nav-background);
   width: 100%;
   position: fixed;
-  height: 100px;
+  height: 200px;
 
   &.secondary {
     top: 0;

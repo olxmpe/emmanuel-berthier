@@ -42,6 +42,11 @@ h1 {
   color: var(--color-light-black);
   text-transform: uppercase;
   margin: var(--default-spacing) 0;
+
+  @media screen and (max-width: 800px) {
+    font-size: 30px;
+    text-align: center;
+  }
 }
 
 h2,
@@ -106,6 +111,28 @@ font-semibold {
 
     &.large {
       padding: var(--menu-height) 20%;
+    }
+  }
+}
+
+.burger-menu {
+  // z-index: var(--z-index-top);
+
+  @media screen and (min-width: 800px) {
+    display: none;
+  }
+
+  width: 100%;
+  position: fixed;
+  top: 0;
+
+  .menu {
+    padding: 2rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+
+    .logo {
+      height: 1rem;
     }
   }
 }

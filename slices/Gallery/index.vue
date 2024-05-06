@@ -118,6 +118,15 @@ const onWheel = (event: WheelEvent) => {
 
 .print {
   .grid {
+    &.large {
+      @media screen and (max-width: 1200px) {
+        padding: var(--menu-height) 15% !important;
+      }
+      @media screen and (max-width: 1000px) {
+        padding: var(--menu-height) 10% !important;
+      }
+    }
+
     @media screen and (min-width: 800px) {
       display: grid;
       height: calc(100vh - var(--menu-height) * 2);
@@ -194,10 +203,6 @@ const onWheel = (event: WheelEvent) => {
 
   &.mobile {
     padding-bottom: 10rem;
-
-    h1 {
-      font-size: 30px;
-    }
   }
 }
 

@@ -20,21 +20,27 @@ const selectCategory = (category: any) => {
 </script>
 
 <template>
-  <div class="flex bounded large">
+  <div class="flex centered full-size">
     <div class="links flex">
       <PrismicLink
         class="title"
         :field="category"
         v-for="category in categories"
         @mouseover="selectCategory(category)"
+        :key="category.id"
         >{{ category.uid }}</PrismicLink
       >
     </div>
 
-    <div class="image" v-for="category in categories">
+    <div
+      class="image-container"
+      v-for="category in categories"
+      :key="category.id"
+    >
       <PrismicImage
         :field="category.data.image"
         v-show="category === selected"
+        class="resizable"
       />
     </div>
   </div>
@@ -42,36 +48,46 @@ const selectCategory = (category: any) => {
 
 <style scoped lang="scss">
 .flex {
-  height: 100vh;
-  gap: 5rem;
+  display: flex;
+}
+
+.centered {
+  justify-content: center;
   align-items: center;
-  justify-content: flex-start;
+}
 
-  &.links {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 2rem;
+.full-size {
+  width: 100vw;
+  height: 100vh;
+}
 
-    a:hover {
-      color: var(--color-yellow);
-    }
-  }
+.links {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2rem;
 
   .title {
     text-transform: uppercase;
     text-align: left;
+
+    &:hover {
+      color: var(--color-yellow);
+    }
   }
+}
 
-  .image {
-    max-width: 50%;
+.image-container {
+  max-width: 50%;
+  margin-top: 2rem; /* Espacement entre le texte et l'image */
 
-    img {
+  img {
+    position: fixed;
+
+    &.resizable {
       max-height: calc(100vh - var(--menu-height) * 2);
       max-width: 100%;
       width: auto;
-      // top: 50%;
-      // left: 50%;
-      // transform: translate(-50%, -50%);
+      height: auto;
     }
   }
 }

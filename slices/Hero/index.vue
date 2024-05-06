@@ -28,11 +28,7 @@ defineProps(
     :effect="'fade'"
   >
     <SwiperSlide v-for="(image, index) in slice.items" :key="index">
-      <PrismicImage :field="image.slider_image" class="swiper-image desktop" />
-      <PrismicImage
-        :field="image.slider_image.mobile"
-        class="swiper-image mobile"
-      />
+      <PrismicImage :field="image.slider_image" class="swiper-image" />
     </SwiperSlide>
   </Swiper>
 </template>

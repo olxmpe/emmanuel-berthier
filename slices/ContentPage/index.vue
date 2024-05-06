@@ -25,6 +25,10 @@ onMounted(() => {
 </script>
 
 <template>
+  <HeaderBackground />
+  <div class="mobile header" v-if="slice.variation === 'default'">
+    <PrismicImage :field="slice.primary.image" />
+  </div>
   <div
     class="container bounded"
     :class="{ reversed: slice.variation === 'default' }"
@@ -33,7 +37,7 @@ onMounted(() => {
       {{ slice.primary.display_title }}
     </h1>
 
-    <div class="image">
+    <div class="image" :class="{ desktop: slice.variation === 'default' }">
       <PrismicImage :field="slice.primary.image" />
     </div>
     <div class="text">
@@ -77,7 +81,7 @@ onMounted(() => {
   </div>
 </template>
 <style scoped lang="scss">
-@media screen and (min-width: 900px) {
+@media screen and (min-width: 800px) {
   .container {
     display: flex;
     justify-content: center;
@@ -108,6 +112,9 @@ onMounted(() => {
 
       img {
         max-height: calc(100vh - var(--menu-height) * 2);
+        max-width: 40vw;
+        top: 50%;
+        transform: translateY(-50%);
         position: fixed;
       }
     }
@@ -120,7 +127,7 @@ onMounted(() => {
   }
 }
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 800px) {
   .container {
     display: block;
   }
@@ -180,6 +187,19 @@ onMounted(() => {
     min-width: 3rem;
     max-width: 5rem;
     height: auto;
+  }
+}
+
+.header {
+  padding-top: 100px;
+  width: 100vw;
+  overflow: hidden;
+
+  img {
+    min-width: 100%;
+    max-height: 50vh;
+    object-fit: cover;
+    object-position: bottom;
   }
 }
 </style>

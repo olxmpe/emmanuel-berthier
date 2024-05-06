@@ -581,7 +581,7 @@ export interface HeroSliceDefaultItem {
    * - **API ID Path**: hero.items[].slider_image
    * - **Documentation**: https://prismic.io/docs/field#image
    */
-  slider_image: prismic.ImageField<"mobile">;
+  slider_image: prismic.ImageField<never>;
 }
 
 /**
