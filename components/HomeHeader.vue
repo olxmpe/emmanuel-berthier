@@ -27,7 +27,7 @@ const instagramLink =
   </div>
   <div class="burger-menu" @click="isFullwidthNavOpen = true">
     <div class="menu no-logo">
-      <BurgerIcon class="burger-icon" />
+      <BurgerIcon :color="'#f1eee3'" />
     </div>
   </div>
   <MobileNavigation
