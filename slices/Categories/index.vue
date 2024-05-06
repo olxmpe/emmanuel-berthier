@@ -20,10 +20,10 @@ const selectCategory = (category: any) => {
 </script>
 
 <template>
-  <div class="flex centered full-size">
-    <div class="links flex">
+  <div class="flex bounded">
+    <div class="links">
       <PrismicLink
-        class="title"
+        class="title link"
         :field="category"
         v-for="category in categories"
         @mouseover="selectCategory(category)"
@@ -32,15 +32,12 @@ const selectCategory = (category: any) => {
       >
     </div>
 
-    <div
-      class="image-container"
-      v-for="category in categories"
-      :key="category.id"
-    >
+    <div class="images">
       <PrismicImage
+        v-for="category in categories"
+        :key="category.id"
         :field="category.data.image"
         v-show="category === selected"
-        class="resizable"
       />
     </div>
   </div>
@@ -48,46 +45,28 @@ const selectCategory = (category: any) => {
 
 <style scoped lang="scss">
 .flex {
-  display: flex;
-}
-
-.centered {
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
-}
 
-.full-size {
-  width: 100vw;
-  height: 100vh;
-}
-
-.links {
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 2rem;
-
-  .title {
+  .links {
+    display: flex;
+    flex-direction: column;
     text-transform: uppercase;
-    text-align: left;
-
-    &:hover {
-      color: var(--color-yellow);
-    }
+    gap: 2rem;
+    z-index: var(--z-index-top);
   }
-}
 
-.image-container {
-  max-width: 50%;
-  margin-top: 2rem;
+  .images {
+    width: 50%;
+    z-index: var(--z-index-top);
+    height: calc(100vh - var(--menu-height) * 2);
 
-  img {
-    position: fixed;
-
-    &.resizable {
+    img {
       max-height: calc(100vh - var(--menu-height) * 2);
-      max-width: 100%;
-      width: auto;
-      height: auto;
+      max-width: 40vw;
+      top: 50%;
+      transform: translateY(-50%);
+      position: fixed;
     }
   }
 }
