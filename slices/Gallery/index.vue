@@ -106,16 +106,6 @@ const onWheel = (event: WheelEvent) => {
   </div>
 </template>
 <style scoped lang="scss">
-.header {
-  padding-top: 100px;
-  width: 100vw;
-
-  img {
-    width: 100%;
-    height: auto;
-  }
-}
-
 .print {
   .grid {
     &.large {

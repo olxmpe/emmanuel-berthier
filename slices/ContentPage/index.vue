@@ -33,7 +33,7 @@ onMounted(() => {
     class="container bounded"
     :class="{ reversed: slice.variation === 'default' }"
   >
-    <h1 v-if="slice.variation === 'imageLeft'" class="mobile">
+    <h1 v-if="slice.variation === 'imageLeft'" class="mobile header">
       {{ slice.primary.display_title }}
     </h1>
 
@@ -118,16 +118,14 @@ onMounted(() => {
         position: fixed;
       }
     }
-
-    .logos {
-      img {
-        width: 10%;
-      }
-    }
   }
 }
 
 @media screen and (max-width: 800px) {
+  h1 {
+    margin-top: 0;
+  }
+
   .container {
     display: block;
   }
@@ -142,17 +140,13 @@ onMounted(() => {
   }
 
   .text {
-    padding: var(--default-spacing) 0;
+    &:not(:first-of-type(h1)) {
+      padding-top: var(--default-spacing);
+    }
   }
 
   .country {
     padding-bottom: 2rem;
-  }
-
-  .logos {
-    img {
-      width: calc(50% / 3);
-    }
   }
 }
 
@@ -180,26 +174,13 @@ onMounted(() => {
 }
 
 .logos {
-  padding: var(--default-spacing) 0;
+  padding: 80px 0;
   justify-content: space-evenly;
 
   img {
-    min-width: 3rem;
-    max-width: 5rem;
-    height: auto;
-  }
-}
-
-.header {
-  padding-top: 100px;
-  width: 100vw;
-  overflow: hidden;
-
-  img {
-    min-width: 100%;
-    max-height: 50vh;
-    object-fit: cover;
-    object-position: bottom;
+    max-height: 5rem;
+    height: 100%;
+    width: auto;
   }
 }
 </style>
