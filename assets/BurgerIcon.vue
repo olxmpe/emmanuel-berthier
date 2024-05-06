@@ -1,13 +1,11 @@
 <template>
   <svg
-    width="27"
-    height="13"
-    viewBox="0 0 27 13"
+    width="11"
+    height="10"
+    viewBox="0 0 11 10"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
   >
-    <path d="M1 0.5H26" stroke="black" stroke-linecap="round" />
-    <path d="M1 6.5H26" stroke="black" stroke-linecap="round" />
-    <path d="M1 12.5H26" stroke="black" stroke-linecap="round" />
+    <path d="M1 1H10M1 5H10M1 9H10" stroke="black" stroke-linecap="round" />
   </svg>
 </template>
