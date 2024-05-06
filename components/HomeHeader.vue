@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import BurgerIcon from "~/assets/BurgerIcon.vue";
 import InstagramIcon from "~/assets/InstagramIcon.vue";
 
 const navigation = useNavigation();
@@ -11,10 +12,10 @@ const instagramLink =
 </script>
 
 <template>
-  <div class="home-nav desktop">
+  <div class="home-nav">
     <div class="flex">
       <img class="logo" src="./../assets/logo-full-grey.png" />
-      <div class="menu-items">
+      <div class="menu-items desktop">
         <div v-for="item in menuItems">
           <PrismicLink :field="item.link">{{ item.label }}</PrismicLink>
         </div>
@@ -25,11 +26,8 @@ const instagramLink =
     </div>
   </div>
   <div class="burger-menu" @click="isFullwidthNavOpen = true">
-    <div class="menu">
-      <RouterLink to="/">
-        <img class="logo" src="./../assets/logo-black.png" />
-      </RouterLink>
-      <BurgerIcon />
+    <div class="menu no-logo">
+      <BurgerIcon class="burger-icon" />
     </div>
   </div>
   <MobileNavigation
@@ -41,16 +39,25 @@ const instagramLink =
 
 <style scoped lang="scss">
 .home-nav {
-  width: 100vw;
-  z-index: var(--z-index-top);
+  z-index: var(--z-index-nav);
   position: absolute;
+  @media screen and (min-width: 800px) {
+    left: 215px;
+    right: 215px;
+  }
+  top: var(--menu-height);
 
   .flex {
-    padding: 12%;
     justify-content: space-between;
+
+    @media screen and (max-width: 800px) {
+      width: 100vw;
+      justify-content: center;
+    }
   }
 
   .logo {
+    margin-top: 8rem;
     height: 8rem;
   }
 

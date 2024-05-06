@@ -44,7 +44,7 @@ h1 {
   margin: var(--default-spacing) 0;
 
   @media screen and (max-width: 800px) {
-    font-size: 30px;
+    font-size: 25px;
     text-align: center;
   }
 }
@@ -116,8 +116,6 @@ font-semibold {
 }
 
 .burger-menu {
-  // z-index: var(--z-index-top);
-
   @media screen and (min-width: 800px) {
     display: none;
   }
@@ -125,11 +123,16 @@ font-semibold {
   width: 100%;
   position: fixed;
   top: 0;
+  z-index: var(--z-index-nav);
 
   .menu {
     padding: 2rem 1.5rem;
     display: flex;
     justify-content: space-between;
+
+    &.no-logo {
+      justify-content: flex-end;
+    }
 
     .logo {
       height: 1rem;

@@ -15,7 +15,7 @@ defineProps(
 </script>
 
 <template>
-  <Swiper
+  <!-- <Swiper
     :slides-per-view="1"
     :navigation="false"
     :pagination="false"
@@ -30,17 +30,36 @@ defineProps(
     <SwiperSlide v-for="(image, index) in slice.items" :key="index">
       <PrismicImage :field="image.slider_image" class="swiper-image" />
     </SwiperSlide>
-  </Swiper>
+  </Swiper> -->
+  <div class="image-container">
+    <PrismicImage :field="slice.items[0].slider_image" />
+  </div>
 </template>
 
 <style scoped lang="scss">
-.swiper {
+.image-container {
   z-index: var(--z-index-slider);
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
 
-  .swiper-image {
-    width: 100%;
+  img {
     height: 100%;
-    object-fit: cover;
+    width: auto;
+
+    @media screen and (max-width: 800px) {
+      transform: translateX(-30vw);
+    }
   }
 }
+
+// .swiper {
+//   z-index: var(--z-index-slider);
+
+//   .swiper-image {
+//     width: 100%;
+//     height: 100%;
+//     object-fit: cover;
+//   }
+// }
 </style>

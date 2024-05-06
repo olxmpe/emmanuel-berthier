@@ -205,7 +205,6 @@ const onWheel = (event: WheelEvent) => {
     margin: auto;
 
     h1 {
-      font-size: 30px;
       margin: 5rem 0 3rem 0;
     }
   }

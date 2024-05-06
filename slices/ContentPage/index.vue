@@ -132,16 +132,11 @@ onMounted(() => {
 
   .image {
     text-align: center;
+    margin-bottom: var(--default-spacing);
 
     img {
       width: 100%;
       height: auto;
-    }
-  }
-
-  .text {
-    &:not(:first-of-type(h1)) {
-      padding-top: var(--default-spacing);
     }
   }
 

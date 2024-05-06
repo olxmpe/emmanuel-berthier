@@ -78,7 +78,7 @@ const selectCategory = (category: any) => {
 
 .image-container {
   max-width: 50%;
-  margin-top: 2rem; /* Espacement entre le texte et l'image */
+  margin-top: 2rem;
 
   img {
     position: fixed;
