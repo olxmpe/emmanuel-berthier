@@ -5,10 +5,13 @@ import InstagramIcon from "~/assets/InstagramIcon.vue";
 const navigation = useNavigation();
 const isFullwidthNavOpen = ref(false);
 
-const menuItems = navigation.value?.data.links.filter((item) => item.main_menu);
+const menuItems = navigation.value?.data.links.filter(
+  (item) => item.main_menu && item.label?.toLowerCase() !== "home"
+);
 const instagramLink =
-  navigation.value?.data.links.find((item) => item.label === "instagram") ??
-  null;
+  navigation.value?.data.links.find(
+    (item) => item.label?.toLowerCase() === "instagram"
+  ) ?? null;
 </script>
 
 <template>
