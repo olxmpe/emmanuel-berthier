@@ -128,11 +128,7 @@ export type NavigationDocument<Lang extends string = string> =
     Lang
   >;
 
-type PageDocumentDataSlicesSlice =
-  | CategoriesSlice
-  | GallerieSlice
-  | ContentPageSlice
-  | HeroSlice;
+type PageDocumentDataSlicesSlice = GallerieSlice | ContentPageSlice | HeroSlice;
 
 /**
  * Content for Page documents
@@ -287,51 +283,6 @@ export type AllDocumentTypes =
   | PageDocument
   | PortfolioDocument
   | SettingsDocument;
-
-/**
- * Primary content in *Categories → Items*
- */
-export interface CategoriesSliceDefaultItem {
-  /**
-   * Catégorie field in *Categories → Items*
-   *
-   * - **Field Type**: Content Relationship
-   * - **Placeholder**: *None*
-   * - **API ID Path**: categories.items[].categorie
-   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
-   */
-  categorie: prismic.ContentRelationshipField<"category">;
-}
-
-/**
- * Default variation for Categories Slice
- *
- * - **API ID**: `default`
- * - **Description**: Default
- * - **Documentation**: https://prismic.io/docs/slice
- */
-export type CategoriesSliceDefault = prismic.SharedSliceVariation<
-  "default",
-  Record<string, never>,
-  Simplify<CategoriesSliceDefaultItem>
->;
-
-/**
- * Slice variation for *Categories*
- */
-type CategoriesSliceVariation = CategoriesSliceDefault;
-
-/**
- * Categories Shared Slice
- *
- * - **API ID**: `categories`
- * - **Description**: Categories
- * - **Documentation**: https://prismic.io/docs/slice
- */
-export type CategoriesSlice = prismic.SharedSlice<
-  "categories",
-  CategoriesSliceVariation
->;
 
 /**
  * Primary content in *ContentPage → Primary*
@@ -698,10 +649,6 @@ declare module "@prismicio/client" {
       SettingsDocument,
       SettingsDocumentData,
       AllDocumentTypes,
-      CategoriesSlice,
-      CategoriesSliceDefaultItem,
-      CategoriesSliceVariation,
-      CategoriesSliceDefault,
       ContentPageSlice,
       ContentPageSliceDefaultPrimary,
       ContentPageSliceDefaultItem,
