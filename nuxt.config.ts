@@ -18,7 +18,7 @@ export default defineNuxtConfig({
         },
         { name: "format-detection", content: "telephone=no" },
       ],
-      link: [{ rel: "icon", type: "image/png", href: "/public/favicon.ico" }],
+      link: [{ rel: "icon", type: "image/png", href: "/favicon.png" }],
     },
   },
 
