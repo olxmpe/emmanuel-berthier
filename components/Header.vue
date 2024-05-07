@@ -45,12 +45,14 @@ const mainNavigationItems = navigation.value?.data.links.filter(
       </RouterLink>
     </div>
   </div>
-  <div class="burger-menu" @click="isFullwidthNavOpen = true">
+  <div class="burger-menu">
     <div class="menu">
       <RouterLink to="/">
         <img class="logo" src="./../assets/logo-black.png" />
       </RouterLink>
-      <BurgerIcon />
+      <div @click="isFullwidthNavOpen = true">
+        <BurgerIcon />
+      </div>
     </div>
   </div>
   <MobileNavigation
