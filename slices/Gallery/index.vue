@@ -89,7 +89,7 @@ onMounted(() => {
             v-if="slice.items[0] !== item"
             :field="item.photo"
             :style="{
-              width: Math.floor(Math.random() * (100 - 45 + 1)) + 45 + '%',
+              width: Math.floor(Math.random() * 40) + 60 + '%',
             }"
           />
         </div>
@@ -111,7 +111,7 @@ onMounted(() => {
             :style="{
               maxHeight:
                 index === 0 ? 'calc(100% - (var(--menu-height)* 4))' : 'auto',
-              width: Math.floor(Math.random() * (100 - 45 + 1)) + 45 + '%',
+              height: Math.floor(Math.random() * 70) + 30 + '%',
             }"
           />
           <h1 class="desktop category">
@@ -136,7 +136,7 @@ onMounted(() => {
             v-if="slice.items[0] !== item"
             :field="item.photo"
             :style="{
-              width: Math.floor(Math.random() * (100 - 45 + 1)) + 45 + '%',
+              width: Math.floor(Math.random() * 40) + 60 + '%',
             }"
           />
         </div>
@@ -172,12 +172,11 @@ onMounted(() => {
       gap: 3rem;
 
       img {
-        max-width: 100%;
-        height: 100%;
-        max-height: calc((100vh - var(--menu-height) * 2 - 6rem) / 3);
         object-fit: cover;
         width: 100%;
         height: 100%;
+        max-width: 100%;
+        max-height: calc((100vh - var(--menu-height) * 2 - 6rem) / 3);
       }
 
       .text {
@@ -217,7 +216,7 @@ onMounted(() => {
         align-items: center;
 
         img {
-          max-width: 80vw;
+          width: auto;
           max-height: calc(100% - (var(--menu-height) * 3));
         }
       }
@@ -236,7 +235,7 @@ onMounted(() => {
   }
 
   &:not(.mobile) {
-    margin-left: -10rem;
+    margin-left: -15rem;
     padding-right: 10rem;
   }
 
