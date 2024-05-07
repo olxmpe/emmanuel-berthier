@@ -1,19 +1,16 @@
 <script setup lang="ts">
 import * as prismic from "@prismicio/client";
+import type { Logger } from "sass";
 
 const client = prismic.createClient("emmanuel-berthier");
 const categories = ref();
 const selected = ref();
 
 onMounted(async () => {
-  try {
-    categories.value = await client.getByType("category").then((response) => {
-      selected.value = response.results[0];
-      return response.results;
-    });
-  } catch (error) {
-    console.error("Failed to fetch categories:", error);
-  }
+  categories.value = await client.getByType("category").then((response) => {
+    selected.value = response.results[0];
+    return response.results;
+  });
 });
 
 const selectCategory = (category: any) => {
@@ -22,7 +19,7 @@ const selectCategory = (category: any) => {
 </script>
 
 <template>
-  <!-- <div class="flex container bounded">
+  <div class="flex container bounded">
     <div class="mobile image"></div>
 
     <div class="links">
@@ -31,9 +28,9 @@ const selectCategory = (category: any) => {
         :field="category"
         v-for="category in categories"
         @mouseover="selectCategory(category)"
-        @click="$router.push('/wildlife')"
+        @click="$router.push('/portfolio/' + category.uid)"
         :key="category.id"
-        >{{ category.uid }}</PrismicLink
+        >{{ category.data.display_title }}</PrismicLink
       >
     </div>
 
@@ -47,7 +44,7 @@ const selectCategory = (category: any) => {
     </div>
 
     <div class="mobile image"></div>
-  </div> -->
+  </div>
 </template>
 
 <style scoped lang="scss">

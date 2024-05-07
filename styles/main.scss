@@ -69,6 +69,11 @@ a {
   &:hover,
   &:active {
     color: var(--color-yellow);
+
+    > * {
+      color: var(--color-yellow);
+      fill: var(--color-yellow);
+    }
   }
 }
 

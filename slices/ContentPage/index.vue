@@ -13,7 +13,6 @@ const props = defineProps(
 const countries = ref<string[]>([]);
 
 const formatDate = (date: string) => {
-  console.log(date);
   return DateTime.fromISO(date).setLocale("fr").toFormat("dd LLLL yyyy");
 };
 

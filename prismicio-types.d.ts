@@ -11,7 +11,18 @@ type CategoryDocumentDataSlicesSlice = GallerieSlice;
  */
 interface CategoryDocumentData {
   /**
-   * Image d'entête field in *Categorie*
+   * Display title field in *Categorie*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Titre affiché
+   * - **API ID Path**: category.display_title
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  display_title: prismic.KeyTextField;
+
+  /**
+   * Menu image field in *Categorie*
    *
    * - **Field Type**: Image
    * - **Placeholder**: *None*
@@ -173,6 +184,71 @@ interface PageDocumentData {
 export type PageDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<PageDocumentData>, "page", Lang>;
 
+type PortfolioDocumentDataSlicesSlice = GallerieSlice;
+
+/**
+ * Content for Portfolio documents
+ */
+interface PortfolioDocumentData {
+  /**
+   * Slice Zone field in *Portfolio*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: portfolio.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<PortfolioDocumentDataSlicesSlice> /**
+   * Meta Description field in *Portfolio*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: portfolio.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */;
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Meta Image field in *Portfolio*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: portfolio.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  meta_image: prismic.ImageField<never>;
+
+  /**
+   * Meta Title field in *Portfolio*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: portfolio.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  meta_title: prismic.KeyTextField;
+}
+
+/**
+ * Portfolio document from Prismic
+ *
+ * - **API ID**: `portfolio`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type PortfolioDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<
+    Simplify<PortfolioDocumentData>,
+    "portfolio",
+    Lang
+  >;
+
 /**
  * Content for Settings documents
  */
@@ -209,6 +285,7 @@ export type AllDocumentTypes =
   | CategoryDocument
   | NavigationDocument
   | PageDocument
+  | PortfolioDocument
   | SettingsDocument;
 
 /**
@@ -457,21 +534,6 @@ export type ContentPageSlice = prismic.SharedSlice<
 >;
 
 /**
- * Primary content in *Gallery → Primary*
- */
-export interface GallerieSliceDefaultPrimary {
-  /**
-   * Catégorie field in *Gallery → Primary*
-   *
-   * - **Field Type**: Content Relationship
-   * - **Placeholder**: *None*
-   * - **API ID Path**: gallerie.primary.category
-   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
-   */
-  category: prismic.ContentRelationshipField<"category">;
-}
-
-/**
  * Primary content in *Gallery → Items*
  */
 export interface GallerieSliceDefaultItem {
@@ -495,7 +557,7 @@ export interface GallerieSliceDefaultItem {
  */
 export type GallerieSliceDefault = prismic.SharedSliceVariation<
   "default",
-  Simplify<GallerieSliceDefaultPrimary>,
+  Record<string, never>,
   Simplify<GallerieSliceDefaultItem>
 >;
 
@@ -630,6 +692,9 @@ declare module "@prismicio/client" {
       PageDocument,
       PageDocumentData,
       PageDocumentDataSlicesSlice,
+      PortfolioDocument,
+      PortfolioDocumentData,
+      PortfolioDocumentDataSlicesSlice,
       SettingsDocument,
       SettingsDocumentData,
       AllDocumentTypes,
@@ -645,7 +710,6 @@ declare module "@prismicio/client" {
       ContentPageSliceDefault,
       ContentPageSliceImageLeft,
       GallerieSlice,
-      GallerieSliceDefaultPrimary,
       GallerieSliceDefaultItem,
       GallerieSlicePrintPrimary,
       GallerieSlicePrintItem,

@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { type Content } from "@prismicio/client";
 import ArrowRight from "~/assets/ArrowRight.vue";
+import * as prismic from "@prismicio/client";
+import type { CategoryDocument } from "~/prismicio-types";
 
 defineProps(
   getSliceComponentProps<Content.GallerieSlice>([
@@ -11,6 +13,13 @@ defineProps(
   ])
 );
 
+const $route = useRoute();
+const $router = useRouter();
+
+const currentCategoryUID = ref<string>($route.params.uid.toString());
+const nextCategory = ref<string | null>(null);
+
+const client = prismic.createClient("emmanuel-berthier");
 const horizontal = ref<HTMLDivElement | null>(null);
 
 const onWheel = (event: WheelEvent) => {
@@ -20,6 +29,35 @@ const onWheel = (event: WheelEvent) => {
     horizontalContainer.scrollLeft += event.deltaY;
   }
 };
+
+const { data: categories } = useAsyncData("$categories", () =>
+  client.getAllByType("category")
+);
+
+const navigateToNextCategory = (categoryUID: string) => {
+  nextCategory.value = getNextCategory(categoryUID);
+
+  if (nextCategory) {
+    $router.replace("/portfolio/" + nextCategory.value!);
+  }
+};
+
+const getNextCategory = (categoryUID: string) => {
+  if (categories.value) {
+    const currentIndex = categories.value.findIndex(
+      (category) => category.uid === categoryUID
+    );
+
+    return currentIndex === categories.value.length - 1
+      ? categories.value[0].uid
+      : categories.value[currentIndex + 1].uid;
+  }
+  return null;
+};
+
+onMounted(() => {
+  getNextCategory(currentCategoryUID.value);
+});
 </script>
 
 <template>
@@ -61,7 +99,7 @@ const onWheel = (event: WheelEvent) => {
   <div v-else class="default">
     <div class="mobile bounded large">
       <div class="text">
-        <h1>{{ slice.primary.category.uid }}</h1>
+        <h1>{{ currentCategoryUID }}</h1>
       </div>
     </div>
     <div class="desktop">
@@ -77,10 +115,15 @@ const onWheel = (event: WheelEvent) => {
             }"
           />
           <h1 class="desktop category">
-            {{ slice.primary.category.uid }}
+            {{ currentCategoryUID }}
           </h1>
-          <div class="flex next-category">
-            <h1>Next category</h1>
+          <div
+            class="flex next-category link"
+            @click="navigateToNextCategory(currentCategoryUID)"
+          >
+            <h1>
+              {{ getNextCategory(currentCategoryUID) }}
+            </h1>
             <ArrowRight />
           </div>
         </div>
@@ -98,8 +141,13 @@ const onWheel = (event: WheelEvent) => {
           />
         </div>
       </div>
-      <div class="flex next-category mobile">
-        <h1>Next category</h1>
+      <div
+        class="flex next-category mobile link"
+        @click="navigateToNextCategory(currentCategoryUID)"
+      >
+        <h1>
+          {{ getNextCategory(currentCategoryUID) }}
+        </h1>
         <ArrowRight class="non-resized" />
       </div>
     </div>
@@ -181,6 +229,7 @@ const onWheel = (event: WheelEvent) => {
   gap: 1rem;
   align-items: center;
   justify-content: flex-end;
+  height: min-content !important;
 
   > svg {
     flex-shrink: 0;

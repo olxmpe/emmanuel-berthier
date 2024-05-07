@@ -8,15 +8,22 @@
     "Main": {
       "uid": {
         "config": {
-          "label": "Libellé",
-          "placeholder": ""
+          "label": "UID",
+          "placeholder": "URL"
         },
         "type": "UID"
+      },
+      "display_title": {
+        "type": "Text",
+        "config": {
+          "label": "Display title",
+          "placeholder": "Titre affiché"
+        }
       },
       "image": {
         "type": "Image",
         "config": {
-          "label": "Image d'entête",
+          "label": "Menu image",
           "constraint": {},
           "thumbnails": []
         }
