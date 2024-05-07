@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import * as prismic from "@prismicio/client";
-import type { Logger } from "sass";
 
 const client = prismic.createClient("emmanuel-berthier");
 const categories = ref();
@@ -57,7 +56,6 @@ const selectCategory = (category: any) => {
     flex-direction: column;
     text-transform: uppercase;
     gap: 2rem;
-    z-index: var(--z-index-top);
 
     @media screen and (max-width: 800px) {
       align-items: center;
@@ -68,7 +66,6 @@ const selectCategory = (category: any) => {
 
   .images {
     width: 50%;
-    z-index: var(--z-index-top);
     height: calc(100vh - var(--menu-height) * 2);
 
     img {

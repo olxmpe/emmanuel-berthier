@@ -72,7 +72,10 @@ a {
 
     > * {
       color: var(--color-yellow);
+
+      &:not(.close-icon) {
       fill: var(--color-yellow);
+      }
     }
   }
 }

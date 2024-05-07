@@ -23,7 +23,9 @@ const instagramLink =
       <RouterLink to="/">
         <img class="logo" src="./../assets/logo-black.png" />
       </RouterLink>
-      <div @click="emits('onClose')" class="link"><CloseIcon /></div>
+      <div @click="emits('onClose')" class="link">
+        <CloseIcon class="close-icon" />
+      </div>
     </div>
 
     <div class="menu main">
