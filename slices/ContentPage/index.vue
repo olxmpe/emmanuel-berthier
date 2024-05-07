@@ -45,9 +45,15 @@ onMounted(() => {
       </h1>
       <PrismicRichText :field="slice.primary.text_block" />
       <div class="flex logos" v-if="slice.variation === 'default'">
-        <PrismicImage :field="slice.primary.logo_left" />
-        <PrismicImage :field="slice.primary.logo_center" />
-        <PrismicImage :field="slice.primary.logo_right" />
+        <PrismicLink :field="slice.primary.logo_left_link"
+          ><PrismicImage :field="slice.primary.logo_left"
+        /></PrismicLink>
+        <PrismicLink :field="slice.primary.logo_center_link"
+          ><PrismicImage :field="slice.primary.logo_center"
+        /></PrismicLink>
+        <PrismicLink :field="slice.primary.logo_right_link"
+          ><PrismicImage :field="slice.primary.logo_right"
+        /></PrismicLink>
       </div>
       <div v-if="slice.items">
         <div v-for="country in countries" class="list">

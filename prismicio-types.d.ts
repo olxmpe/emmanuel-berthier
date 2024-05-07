@@ -329,6 +329,16 @@ export interface ContentPageSliceDefaultPrimary {
   logo_left: prismic.ImageField<never>;
 
   /**
+   * Lien - logo de gauche field in *ContentPage → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: content_page.primary.logo_left_link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  logo_left_link: prismic.LinkField;
+
+  /**
    * Logo du milieu field in *ContentPage → Primary*
    *
    * - **Field Type**: Image
@@ -339,6 +349,16 @@ export interface ContentPageSliceDefaultPrimary {
   logo_center: prismic.ImageField<never>;
 
   /**
+   * Lien - logo du milieu field in *ContentPage → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: content_page.primary.logo_center_link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  logo_center_link: prismic.LinkField;
+
+  /**
    * Logo de droite field in *ContentPage → Primary*
    *
    * - **Field Type**: Image
@@ -347,6 +367,16 @@ export interface ContentPageSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/field#image
    */
   logo_right: prismic.ImageField<never>;
+
+  /**
+   * Lien - logo de droite field in *ContentPage → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: content_page.primary.logo_right_link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  logo_right_link: prismic.LinkField;
 }
 
 /**

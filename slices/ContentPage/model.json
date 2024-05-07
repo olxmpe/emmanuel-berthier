@@ -44,6 +44,15 @@
             "thumbnails": []
           }
         },
+        "logo_left_link": {
+          "type": "Link",
+          "config": {
+            "label": "Lien - logo de gauche",
+            "placeholder": "",
+            "allowTargetBlank": false,
+            "select": null
+          }
+        },
         "logo_center": {
           "type": "Image",
           "config": {
@@ -52,12 +61,28 @@
             "thumbnails": []
           }
         },
+        "logo_center_link": {
+          "type": "Link",
+          "config": {
+            "label": "Lien - logo du milieu",
+            "placeholder": "",
+            "select": null
+          }
+        },
         "logo_right": {
           "type": "Image",
           "config": {
             "label": "Logo de droite",
             "constraint": {},
             "thumbnails": []
+          }
+        },
+        "logo_right_link": {
+          "type": "Link",
+          "config": {
+            "label": "Lien - logo de droite",
+            "placeholder": "",
+            "select": null
           }
         }
       },
