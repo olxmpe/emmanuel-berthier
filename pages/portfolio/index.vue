@@ -19,8 +19,6 @@ const selectCategory = (category: any) => {
 
 <template>
   <div class="flex container bounded">
-    <div class="mobile image"></div>
-
     <div class="links">
       <PrismicLink
         class="title link"
@@ -41,8 +39,15 @@ const selectCategory = (category: any) => {
         v-show="category === selected"
       />
     </div>
-
-    <div class="mobile image"></div>
+    <div class="images mobile">
+      <PrismicImage
+        v-for="(category, index) in categories"
+        :key="category.id"
+        :field="category.data.image"
+        v-show="index < 2"
+        :class="index === 0 ? 'first' : 'second'"
+      />
+    </div>
   </div>
 </template>
 
@@ -50,19 +55,6 @@ const selectCategory = (category: any) => {
 .container {
   justify-content: space-around;
   align-items: center;
-
-  .links {
-    display: flex;
-    flex-direction: column;
-    text-transform: uppercase;
-    gap: 2rem;
-
-    @media screen and (max-width: 800px) {
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-    }
-  }
 
   .images {
     width: 50%;
@@ -73,13 +65,51 @@ const selectCategory = (category: any) => {
       max-width: 40vw;
       top: 50%;
       transform: translateY(-50%);
-      position: fixed;
+
+      @media screen and (min-width: 800px) {
+        position: fixed;
+      }
     }
   }
 
-  .mobile {
-    img {
-      max-width: 50%;
+  .links {
+    display: flex;
+    flex-direction: column;
+    text-transform: uppercase;
+    gap: 2rem;
+  }
+
+  @media screen and (max-width: 800px) {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+
+    .images {
+      &:not(.desktop) {
+        z-index: var(--z-index-null);
+        img {
+          max-width: 16rem;
+          position: fixed;
+
+          &.first {
+            position: absolute;
+            top: 25%;
+            right: 40%;
+          }
+          &.second {
+            position: absolute;
+            top: 80%;
+            left: 35%;
+          }
+        }
+      }
+    }
+
+    .links {
+      position: absolute;
+      z-index: var(--z-index-default);
+      align-items: center;
     }
   }
 }

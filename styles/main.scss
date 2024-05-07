@@ -20,6 +20,8 @@
   --z-index-nav: 4;
   --z-index-nav-background: 3;
   --z-index-slider: 2;
+  --z-index-default: 1;
+  --z-index-null: 0;
 }
 
 * {
@@ -74,7 +76,7 @@ a {
       color: var(--color-yellow);
 
       &:not(.close-icon) {
-      fill: var(--color-yellow);
+        fill: var(--color-yellow);
       }
     }
   }
