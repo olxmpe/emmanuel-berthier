@@ -111,10 +111,6 @@ const mainNavigationItems = navigation.value?.data.links.filter(
     &.main {
       justify-content: space-between;
       align-items: flex-end;
-
-      a {
-        z-index: var(--z-index-top);
-      }
     }
   }
 }

@@ -16,6 +16,9 @@ defineProps(
 const $route = useRoute();
 const $router = useRouter();
 
+const isFullWidthGalleryOpen = ref(false);
+const galleryActiveIndex = ref<number>(0);
+
 const currentCategoryUID = ref<string>($route.params.uid.toString());
 const nextCategory = ref<string | null>(null);
 
@@ -55,18 +58,35 @@ const getNextCategory = (categoryUID: string) => {
   return null;
 };
 
+const openFullwithGallery = (index: number) => {
+  isFullWidthGalleryOpen.value = true;
+  galleryActiveIndex.value = index;
+};
+
 onMounted(() => {
   getNextCategory(currentCategoryUID.value);
 });
 </script>
 
 <template>
+  <FullwidthGallery
+    v-if="isFullWidthGalleryOpen"
+    :images="slice.items"
+    :category="currentCategoryUID"
+    @on-close="isFullWidthGalleryOpen = false"
+    :activeIndex="galleryActiveIndex"
+  />
+
   <PrismicImage class="mobile header" :field="slice.items[0].photo" />
 
   <div v-if="slice.variation === 'print'" class="print">
     <div class="grid desktop bounded large">
       <template v-for="(item, index) in slice.items.slice(0, 4)">
-        <PrismicImage :field="item.photo" />
+        <PrismicImage
+          :field="item.photo"
+          @click="openFullwithGallery(index)"
+          class="pointer"
+        />
       </template>
 
       <div class="text desktop">
@@ -74,8 +94,12 @@ onMounted(() => {
         <PrismicRichText :field="slice.primary.text"></PrismicRichText>
       </div>
 
-      <template v-for="item in slice.items.slice(4, 8)">
-        <PrismicImage :field="item.photo" />
+      <template v-for="(item, index) in slice.items.slice(4, 8)">
+        <PrismicImage
+          :field="item.photo"
+          @click="openFullwithGallery(index + 4)"
+          class="pointer"
+        />
       </template>
     </div>
     <div class="mobile">
@@ -84,8 +108,10 @@ onMounted(() => {
         <PrismicRichText :field="slice.primary.text"></PrismicRichText>
       </div>
       <div class="images print">
-        <div v-for="item in slice.items" class="image-container">
+        <div v-for="(item, index) in slice.items" class="image-container">
           <PrismicImage
+            @click="openFullwithGallery(index)"
+            class="pointer"
             v-if="slice.items[0] !== item"
             :field="item.photo"
             :style="{
@@ -106,7 +132,9 @@ onMounted(() => {
       <div ref="horizontal" @wheel="onWheel" class="horizontal desktop">
         <div class="flex">
           <PrismicImage
+            class="pointer"
             v-for="(item, index) in slice.items"
+            @click="openFullwithGallery(index)"
             :field="item.photo"
             :style="{
               maxHeight:
@@ -114,7 +142,7 @@ onMounted(() => {
               height: Math.floor(Math.random() * 70) + 30 + '%',
             }"
           />
-          <h1 class="desktop category">
+          <h1 class="desktop category" v-if="!isFullWidthGalleryOpen">
             {{ currentCategoryUID }}
           </h1>
           <div
@@ -131,8 +159,10 @@ onMounted(() => {
     </div>
     <div class="mobile">
       <div class="images">
-        <div v-for="item in slice.items" class="image-container">
+        <div v-for="(item, index) in slice.items" class="image-container">
           <PrismicImage
+            @click="openFullwithGallery(index)"
+            class="pointer"
             v-if="slice.items[0] !== item"
             :field="item.photo"
             :style="{
@@ -281,5 +311,9 @@ onMounted(() => {
       }
     }
   }
+}
+
+.pointer {
+  cursor: pointer;
 }
 </style>
