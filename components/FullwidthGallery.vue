@@ -27,6 +27,16 @@ const goToNextSlide = () => {
     activeIndex.value === props.images.length ? 1 : activeIndex.value + 1;
   activeImage.value = props.images[activeIndex.value - 1].photo;
 };
+
+const handleMobileSlideChange = (swiper: any) => {
+  let index = swiper.activeIndex;
+
+  if (swiper.loopedSlides) {
+    index = swiper.realIndex;
+  }
+
+  activeIndex.value = index + 1;
+};
 </script>
 <template>
   <div class="header">
@@ -72,6 +82,7 @@ const goToNextSlide = () => {
       class="swiper mobile"
       :effect="'fade'"
       :initialSlide="props.activeIndex"
+      @slideChange="handleMobileSlideChange"
     >
       <SwiperSlide v-for="image in props.images">
         <div class="slide">
