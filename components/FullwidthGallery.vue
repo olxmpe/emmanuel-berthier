@@ -15,7 +15,6 @@ const props = defineProps<{
 const emits = defineEmits(["onClose"]);
 const activeIndex = ref(props.activeIndex + 1);
 const activeImage = ref(props.images[props.activeIndex].photo);
-const swiper = useSwiper();
 
 const goToPreviousSlide = () => {
   activeIndex.value =
@@ -51,13 +50,32 @@ const goToNextSlide = () => {
       :modules="[EffectFade]"
       :loop="true"
       :speed="10"
-      class="swiper"
+      class="swiper desktop"
       :effect="'fade'"
       :initialSlide="props.activeIndex"
     >
       <SwiperSlide>
         <div class="slide">
-          <PrismicImage :field="activeImage" class="swiper-image" />
+          <PrismicImage :field="activeImage" />
+        </div>
+      </SwiperSlide>
+    </Swiper>
+
+    <Swiper
+      :slides-per-view="1"
+      :centeredSlides="true"
+      :navigation="true"
+      :pagination="false"
+      :modules="[EffectFade]"
+      :loop="true"
+      :speed="10"
+      class="swiper mobile"
+      :effect="'fade'"
+      :initialSlide="props.activeIndex"
+    >
+      <SwiperSlide v-for="image in props.images">
+        <div class="slide">
+          <PrismicImage :field="image.photo" />
         </div>
       </SwiperSlide>
     </Swiper>
@@ -95,9 +113,15 @@ const goToNextSlide = () => {
     height: 80%;
     @media screen and (max-width: 800px) {
       width: 90%;
+      &.desktop {
+        display: none;
+      }
     }
     @media screen and (min-width: 800px) {
       width: 60%;
+      &.mobile {
+        display: none;
+      }
     }
 
     .slide {
@@ -107,15 +131,9 @@ const goToNextSlide = () => {
       align-items: center;
       justify-content: center;
 
-      .swiper-image {
+      img {
         max-height: 100%;
         max-width: 100%;
-
-        .img {
-          object-fit: contain;
-          height: 100%;
-          width: auto;
-        }
       }
     }
   }
