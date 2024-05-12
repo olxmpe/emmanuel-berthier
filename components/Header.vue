@@ -65,7 +65,7 @@ const mainNavigationItems = navigation.value?.data.links.filter(
 .navbar {
   z-index: var(--z-index-nav);
 
-  @media screen and (max-width: 800px) {
+  @media screen and (max-width: 1025px) {
     display: none;
   }
 

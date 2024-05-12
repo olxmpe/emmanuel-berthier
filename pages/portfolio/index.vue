@@ -87,7 +87,7 @@ useHead({
       top: 50%;
       transform: translateY(-50%);
 
-      @media screen and (min-width: 800px) {
+      @media screen and (min-width: 1025px) {
         position: fixed;
       }
     }
@@ -100,7 +100,7 @@ useHead({
     gap: 2rem;
   }
 
-  @media screen and (max-width: 800px) {
+  @media screen and (max-width: 1025px) {
     position: fixed;
     width: 100%;
     height: 100%;

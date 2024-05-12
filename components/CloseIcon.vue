@@ -22,7 +22,7 @@ const props = defineProps<{
   border-radius: 100%;
 
   &.open {
-    border: solid 0.5px var(--color-black);
+    border: solid 0.7px var(--color-black);
   }
 
   .burger {
@@ -36,7 +36,7 @@ const props = defineProps<{
     span {
       display: block;
       position: absolute;
-      height: 0.5px;
+      height: 0.7px;
       width: 100%;
       background: var(--color-black);
       border-radius: 9px;

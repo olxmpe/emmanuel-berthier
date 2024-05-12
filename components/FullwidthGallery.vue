@@ -120,13 +120,13 @@ const handleMobileSlideChange = (swiper: any) => {
 
   .swiper {
     height: 80%;
-    @media screen and (max-width: 800px) {
+    @media screen and (max-width: 1025px) {
       width: 90%;
       &.desktop {
         display: none;
       }
     }
-    @media screen and (min-width: 800px) {
+    @media screen and (min-width: 1025px) {
       width: 60%;
       &.mobile {
         display: none;

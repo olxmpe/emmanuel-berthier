@@ -194,7 +194,7 @@ onMounted(() => {
       }
     }
 
-    @media screen and (min-width: 800px) {
+    @media screen and (min-width: 1025px) {
       display: grid;
       height: calc(100vh - var(--menu-height) * 2);
       grid-template-columns: repeat(3, 1fr);

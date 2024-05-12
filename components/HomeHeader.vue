@@ -18,7 +18,7 @@ const instagramLink =
   <div class="home-nav">
     <div class="flex">
       <img class="logo" src="./../assets/logo-full-grey.png" />
-      <div class="menu-items desktop">
+      <div class="menu-items">
         <div v-for="item in menuItems">
           <PrismicLink :field="item.link">{{ item.label }}</PrismicLink>
         </div>
@@ -93,6 +93,12 @@ const instagramLink =
         }
       }
     }
+  }
+}
+
+@media screen and (min-width: 800px) {
+  .burger-menu {
+    display: none !important;
   }
 }
 </style>

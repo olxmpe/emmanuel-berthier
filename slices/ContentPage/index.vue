@@ -93,7 +93,7 @@ onMounted(() => {
   </div>
 </template>
 <style scoped lang="scss">
-@media screen and (min-width: 800px) {
+@media screen and (min-width: 1025px) {
   .container {
     display: flex;
     justify-content: center;
@@ -133,7 +133,7 @@ onMounted(() => {
   }
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 1025px) {
   h1 {
     margin-top: 0;
   }
