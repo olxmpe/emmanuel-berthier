@@ -76,10 +76,10 @@ onMounted(() => {
     :activeIndex="galleryActiveIndex"
   />
 
-  <PrismicImage class="mobile header" :field="slice.items[0].photo" />
+  <PrismicImage class="mobile-gallery header" :field="slice.items[0].photo" />
 
   <div v-if="slice.variation === 'print'" class="print">
-    <div class="grid desktop bounded large">
+    <div class="grid desktop-gallery bounded large">
       <template v-for="(item, index) in slice.items.slice(0, 4)">
         <PrismicImage
           :field="item.photo"
@@ -88,7 +88,7 @@ onMounted(() => {
         />
       </template>
 
-      <div class="text desktop">
+      <div class="text desktop-gallery">
         <h1>{{ slice.primary.display_title }}</h1>
         <PrismicRichText :field="slice.primary.text"></PrismicRichText>
       </div>
@@ -101,7 +101,7 @@ onMounted(() => {
         />
       </template>
     </div>
-    <div class="mobile">
+    <div class="mobile-gallery">
       <div class="text">
         <h1>{{ slice.primary.display_title }}</h1>
         <PrismicRichText :field="slice.primary.text"></PrismicRichText>
@@ -122,13 +122,13 @@ onMounted(() => {
     </div>
   </div>
   <div v-else class="default">
-    <div class="mobile bounded large">
+    <div class="mobile-gallery bounded large">
       <div class="text">
         <h1>{{ currentCategoryUID }}</h1>
       </div>
     </div>
-    <div class="desktop">
-      <div ref="horizontal" @wheel="onWheel" class="horizontal desktop">
+    <div class="desktop-gallery">
+      <div ref="horizontal" @wheel="onWheel" class="horizontal desktop-gallery">
         <div class="flex">
           <PrismicImage
             class="pointer"
@@ -141,7 +141,7 @@ onMounted(() => {
               height: Math.floor(Math.random() * 70) + 30 + '%',
             }"
           />
-          <h1 class="desktop category" v-if="!isFullWidthGalleryOpen">
+          <h1 class="desktop-gallery category" v-if="!isFullWidthGalleryOpen">
             {{ currentCategoryUID }}
           </h1>
           <div
@@ -156,7 +156,7 @@ onMounted(() => {
         </div>
       </div>
     </div>
-    <div class="mobile">
+    <div class="mobile-gallery">
       <div class="images">
         <div v-for="(item, index) in slice.items" class="image-container">
           <PrismicImage
@@ -171,7 +171,7 @@ onMounted(() => {
         </div>
       </div>
       <div
-        class="flex next-category mobile link"
+        class="flex next-category mobile-gallery link"
         @click="navigateToNextCategory(currentCategoryUID)"
       >
         <h1>
@@ -194,7 +194,7 @@ onMounted(() => {
       }
     }
 
-    @media screen and (min-width: 1025px) {
+    @media screen and (min-width: 800px) {
       display: grid;
       height: calc(100vh - var(--menu-height) * 2);
       grid-template-columns: repeat(3, 1fr);
@@ -223,7 +223,7 @@ onMounted(() => {
 }
 
 .default {
-  .desktop {
+  .desktop-gallery {
     .horizontal {
       overflow-x: auto;
       padding-left: 10rem;
@@ -263,17 +263,17 @@ onMounted(() => {
     flex-shrink: 0;
   }
 
-  &:not(.mobile) {
+  &:not(.mobile-gallery) {
     margin-left: -15rem;
     padding-right: 10rem;
   }
 
-  &.mobile {
+  &.mobile-gallery {
     padding-bottom: 10rem;
   }
 }
 
-.mobile {
+.mobile-gallery {
   max-width: 100%;
 
   .text {
