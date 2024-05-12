@@ -68,15 +68,22 @@ onMounted(() => {
             >
               <p>{{ item.description }}</p>
               <p>
-                Du {{ formatDate(item.start as string) }} au
-                {{ formatDate(item.end as string) }} -
-                <span v-if="item.remaining === 0" class="full">Complet</span>
-                <span v-else-if="item.remaining === 1" class="available">
-                  {{ item.remaining }} place restante
+                {{
+                  $t("from_date_to_date", {
+                    from: formatDate(item.start as string),
+                    end: formatDate(item.start as string),
+                  })
+                }}
+                -
+                <span v-if="item.remaining === 0" class="full">{{
+                  $t("full")
+                }}</span>
+                <span v-else-if="item.remaining === 1" class="available"
+                  >{{ $t("place_left", { count: item.remaining }) }}
                 </span>
-                <span v-else class="available"
-                  >{{ item.remaining }} places restantes</span
-                >
+                <span v-else class="available">{{
+                  $t("places_left", { count: item.remaining })
+                }}</span>
               </p>
             </div>
           </div>

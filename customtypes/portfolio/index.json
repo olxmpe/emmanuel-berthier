@@ -12,15 +12,36 @@
         },
         "type": "UID"
       },
+      "title": {
+        "type": "StructuredText",
+        "config": {
+          "label": "title",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "single": "heading1"
+        }
+      },
+      "featured_mobile_image_first": {
+        "type": "Image",
+        "config": {
+          "label": "Featured mobile image first",
+          "constraint": {},
+          "thumbnails": []
+        }
+      },
+      "featured_mobile_image_second": {
+        "type": "Image",
+        "config": {
+          "label": "featured mobile image second",
+          "constraint": {},
+          "thumbnails": []
+        }
+      },
       "slices": {
         "type": "Slices",
         "fieldset": "Slice Zone",
         "config": {
-          "choices": {
-            "gallerie": {
-              "type": "SharedSlice"
-            }
-          }
+          "choices": {}
         }
       }
     },

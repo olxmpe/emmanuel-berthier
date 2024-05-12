@@ -6,7 +6,7 @@ export default defineNuxtConfig({
     head: {
       title: "Emmanuel Berthier",
       htmlAttrs: {
-        lang: "en",
+        lang: "fr",
       },
       meta: [
         { charset: "utf-8" },
@@ -24,7 +24,14 @@ export default defineNuxtConfig({
 
   css: ["~/styles/main.scss"],
 
-  modules: ["@nuxtjs/prismic"],
+  modules: ["@nuxtjs/prismic", "@nuxtjs/i18n"],
+
+  i18n: {
+    locales: ["en-us", "fr-fr"],
+    defaultLocale: "fr-fr",
+    detectBrowserLanguage: false,
+    vueI18n: "~/i18n.config.ts",
+  },
 
   prismic: {
     endpoint: "emmanuel-berthier",
@@ -39,6 +46,14 @@ export default defineNuxtConfig({
           type: "page",
           uid: "home",
           path: "/",
+        },
+        {
+          type: "portfolio",
+          path: "/",
+        },
+        {
+          type: "portfolio",
+          path: "/:uid",
         },
       ],
     },

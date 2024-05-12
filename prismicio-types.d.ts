@@ -13,13 +13,13 @@ interface CategoryDocumentData {
   /**
    * Display title field in *Categorie*
    *
-   * - **Field Type**: Text
-   * - **Placeholder**: Titre affiché
+   * - **Field Type**: Title
+   * - **Placeholder**: *None*
    * - **API ID Path**: category.display_title
    * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#key-text
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
    */
-  display_title: prismic.KeyTextField;
+  display_title: prismic.TitleField;
 
   /**
    * Menu image field in *Categorie*
@@ -180,12 +180,45 @@ interface PageDocumentData {
 export type PageDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<PageDocumentData>, "page", Lang>;
 
-type PortfolioDocumentDataSlicesSlice = GallerieSlice;
+type PortfolioDocumentDataSlicesSlice = never;
 
 /**
  * Content for Portfolio documents
  */
 interface PortfolioDocumentData {
+  /**
+   * title field in *Portfolio*
+   *
+   * - **Field Type**: Title
+   * - **Placeholder**: *None*
+   * - **API ID Path**: portfolio.title
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  title: prismic.TitleField;
+
+  /**
+   * Featured mobile image first field in *Portfolio*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: portfolio.featured_mobile_image_first
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  featured_mobile_image_first: prismic.ImageField<never>;
+
+  /**
+   * featured mobile image second field in *Portfolio*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: portfolio.featured_mobile_image_second
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  featured_mobile_image_second: prismic.ImageField<never>;
+
   /**
    * Slice Zone field in *Portfolio*
    *

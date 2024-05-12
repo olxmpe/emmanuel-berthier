@@ -14,10 +14,12 @@
         "type": "UID"
       },
       "display_title": {
-        "type": "Text",
+        "type": "StructuredText",
         "config": {
           "label": "Display title",
-          "placeholder": "Titre affiché"
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "single": "heading1"
         }
       },
       "image": {

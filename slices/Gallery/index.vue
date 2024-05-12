@@ -2,7 +2,6 @@
 import { type Content } from "@prismicio/client";
 import ArrowRight from "~/assets/ArrowRight.vue";
 import * as prismic from "@prismicio/client";
-import type { CategoryDocument } from "~/prismicio-types";
 
 defineProps(
   getSliceComponentProps<Content.GallerieSlice>([
@@ -41,7 +40,7 @@ const navigateToNextCategory = (categoryUID: string) => {
   nextCategory.value = getNextCategory(categoryUID);
 
   if (nextCategory) {
-    $router.replace("/portfolio/" + nextCategory.value!);
+    $router.replace(nextCategory.value!);
   }
 };
 

@@ -1,9 +1,15 @@
 <script setup lang="ts">
-import * as prismic from "@prismicio/client";
+const { locale } = useI18n();
+const prismic = usePrismic();
+const settings = useSettings();
 
-const client = prismic.createClient("emmanuel-berthier");
-const categories = ref();
+const client = prismic.client;
 const selected = ref();
+const categories = ref();
+
+const { data: page } = useAsyncData(`${locale.value}/index`, () =>
+  client.getByUID("portfolio", "portfolio", { lang: locale.value })
+);
 
 onMounted(async () => {
   categories.value = await client.getByType("category").then((response) => {
@@ -15,19 +21,33 @@ onMounted(async () => {
 const selectCategory = (category: any) => {
   selected.value = category;
 };
+
+watch(
+  () => page.value?.alternate_languages,
+  () => {
+    useAlternateLanguages().value = page.value?.alternate_languages || [];
+  },
+  { immediate: true }
+);
+
+useHead({
+  title: computed(
+    () =>
+      `${prismic.asText(page.value?.data.title)} | ${prismic.asText(settings.value?.data.siteTitle)}`
+  ),
+});
 </script>
 
 <template>
   <div class="flex container bounded">
     <div class="links">
-      <PrismicLink
-        class="title link"
-        :field="category"
+      <RouterLink
         v-for="category in categories"
+        class="title link"
+        :to="$route.path + '/' + category.uid"
         @mouseover="selectCategory(category)"
-        @click="$router.push('/portfolio/' + category.uid)"
         :key="category.id"
-        >{{ category.data.display_title }}</PrismicLink
+        >{{ category.uid }}</RouterLink
       >
     </div>
 
@@ -39,13 +59,14 @@ const selectCategory = (category: any) => {
         v-show="category === selected"
       />
     </div>
-    <div class="images mobile">
+    <div class="images mobile" v-if="page">
       <PrismicImage
-        v-for="(category, index) in categories"
-        :key="category.id"
-        :field="category.data.image"
-        v-show="index < 2"
-        :class="index === 0 ? 'first' : 'second'"
+        :field="page.data.featured_mobile_image_first"
+        class="first"
+      />
+      <PrismicImage
+        :field="page.data.featured_mobile_image_second"
+        class="second"
       />
     </div>
   </div>
