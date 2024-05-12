@@ -16,6 +16,7 @@
   --default-spacing: 60px;
   --menu-height: 100px;
 
+  --z-index-modal: 7;
   --z-index-top: 6;
   --z-index-nav: 5;
   --z-index-image-absolute: 4;
@@ -134,7 +135,7 @@ font-semibold {
   width: 100%;
   position: fixed;
   top: 0;
-  z-index: var(--z-index-nav);
+  z-index: var(--z-index-top);
 
   .menu {
     padding: 2rem 1.5rem;

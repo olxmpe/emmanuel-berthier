@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import BurgerIcon from "~/assets/BurgerIcon.vue";
 import InstagramIcon from "~/assets/InstagramIcon.vue";
+import CloseIcon from "./CloseIcon.vue";
 
 const navigation = useNavigation();
 const isFullwidthNavOpen = ref(false);
@@ -28,9 +28,9 @@ const instagramLink =
       </div>
     </div>
   </div>
-  <div class="burger-menu" @click="isFullwidthNavOpen = true">
+  <div class="burger-menu" @click="isFullwidthNavOpen = !isFullwidthNavOpen">
     <div class="menu no-logo">
-      <BurgerIcon :color="'#f1eee3'" />
+      <CloseIcon :isActive="isFullwidthNavOpen" :isLightTheme="true" />
     </div>
   </div>
   <MobileNavigation

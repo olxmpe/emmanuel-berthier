@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { Swiper, SwiperSlide, useSwiper } from "swiper/vue";
+import { Swiper, SwiperSlide } from "swiper/vue";
 import { EffectFade } from "swiper/modules";
 import "swiper/css";
 import ArrowLeft from "~/assets/ArrowLeft.vue";
-import CloseIcon from "~/assets/CloseIcon.vue";
+import CloseIcon from "./CloseIcon.vue";
 import ArrowRight from "~/assets/ArrowRight.vue";
 
 const props = defineProps<{
@@ -45,7 +45,7 @@ const handleMobileSlideChange = (swiper: any) => {
         {{ props.category[0].toUpperCase() + props.category.slice(1) }}
         {{ activeIndex }} / {{ props.images.length }}
       </div>
-      <div @click="emits('onClose')"><CloseIcon /></div>
+      <div @click="emits('onClose')"><CloseIcon :isActive="true" /></div>
     </div>
   </div>
   <div class="container">
@@ -95,7 +95,7 @@ const handleMobileSlideChange = (swiper: any) => {
 </template>
 <style scoped lang="scss">
 .header {
-  z-index: var(--z-index-top);
+  z-index: var(--z-index-modal);
   position: fixed;
   top: 0;
   height: var(--menu-height);
@@ -111,7 +111,7 @@ const handleMobileSlideChange = (swiper: any) => {
 .container {
   width: 100vw;
   height: 100vh;
-  z-index: var(--z-index-nav);
+  z-index: var(--z-index-top);
   position: fixed;
   background-color: var(--color-grey-background);
   display: flex;

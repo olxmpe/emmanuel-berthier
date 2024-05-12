@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import CloseIcon from "~/assets/CloseIcon.vue";
 import InstagramIcon from "~/assets/InstagramIcon.vue";
 const navigation = useNavigation();
 
@@ -15,18 +14,16 @@ const contactInfos = navigation.value?.data.links.filter(
 const instagramLink =
   navigation.value?.data.links.find((item) => item.label === "instagram")
     ?.link ?? null;
+
+const localePath = useLocalePath();
 </script>
 <template>
   <div class="fullwidth-navigation">
     <div class="menu top">
-      <RouterLink to="/">
+      <RouterLink to="/" v-if="$route.path === localePath('/')">
         <img class="logo" src="./../assets/logo-black.png" />
       </RouterLink>
-      <div @click="emits('onClose')" class="link">
-        <CloseIcon class="close-icon" />
-      </div>
     </div>
-
     <div class="menu main">
       <div v-for="item in mainNavigationItems">
         <PrismicLink

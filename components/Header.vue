@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import BurgerIcon from "~/assets/BurgerIcon.vue";
 import InstagramIcon from "~/assets/InstagramIcon.vue";
+import CloseIcon from "./CloseIcon.vue";
 
 const navigation = useNavigation();
 
@@ -50,8 +50,8 @@ const mainNavigationItems = navigation.value?.data.links.filter(
       <RouterLink to="/">
         <img class="logo" src="./../assets/logo-black.png" />
       </RouterLink>
-      <div @click="isFullwidthNavOpen = true">
-        <BurgerIcon />
+      <div @click="isFullwidthNavOpen = !isFullwidthNavOpen">
+        <CloseIcon :isActive="isFullwidthNavOpen" />
       </div>
     </div>
   </div>
