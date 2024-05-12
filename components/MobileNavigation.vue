@@ -2,7 +2,6 @@
 import CloseIcon from "~/assets/CloseIcon.vue";
 import InstagramIcon from "~/assets/InstagramIcon.vue";
 const navigation = useNavigation();
-const isFullwidthNavOpen = ref(false);
 
 const emits = defineEmits(["onClose"]);
 

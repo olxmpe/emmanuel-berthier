@@ -119,7 +119,7 @@ onMounted(() => {
 
     .image {
       width: 50%;
-      z-index: var(--z-index-top);
+      z-index: var(--z-index-image-absolute);
       height: calc(100vh - var(--menu-height) * 2);
 
       img {
