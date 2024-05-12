@@ -68,6 +68,7 @@ $breakpoint: 800px;
 
     @media screen and (max-width: $breakpoint) {
       margin-top: 10%;
+      position: fixed;
     }
   }
 

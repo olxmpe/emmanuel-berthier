@@ -7,13 +7,13 @@ const client = prismic.client;
 const selected = ref();
 const categories = ref();
 
-const { data: page } = useAsyncData(`${locale.value}/index`, () =>
+const { data: page } = useAsyncData(`${locale.value}/portfolio`, () =>
   client.getByUID("portfolio", "portfolio", { lang: locale.value })
 );
 
 onMounted(async () => {
   categories.value = await client.getByType("category").then((response) => {
-    selected.value = response.results[0];
+    selectCategory(response.results[0]);
     return response.results;
   });
 });
@@ -110,7 +110,6 @@ useHead({
       &:not(.desktop) {
         z-index: var(--z-index-null);
         img {
-          max-width: 16rem;
           position: fixed;
 
           &.first {
