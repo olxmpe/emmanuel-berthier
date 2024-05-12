@@ -13,25 +13,21 @@ defineProps(
 </script>
 
 <template>
-  <div class="image-container">
-    <PrismicImage :field="slice.items[0].slider_image" />
-  </div>
+  <div
+    class="image-container"
+    :style="{ backgroundImage: `url(${slice.items[0].slider_image.url})` }"
+  ></div>
 </template>
 
 <style scoped lang="scss">
 .image-container {
+  position: fixed;
   z-index: var(--z-index-slider);
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   overflow: hidden;
-
-  img {
-    height: 100%;
-    width: auto;
-
-    @media screen and (max-width: 600px) {
-      transform: translateX(-30vw);
-    }
-  }
+  background-repeat: no-repeat;
+  background-position: 10% bottom;
+  background-size: cover;
 }
 </style>

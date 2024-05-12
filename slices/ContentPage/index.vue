@@ -93,8 +93,8 @@ onMounted(() => {
   </div>
 </template>
 <style scoped lang="scss">
-@media screen and (min-width: 1025px) {
-  .container {
+.container {
+  @media screen and (min-width: 1025px) {
     display: flex;
     justify-content: center;
     gap: 10rem;
@@ -131,18 +131,20 @@ onMounted(() => {
       }
     }
   }
-}
 
-@media screen and (max-width: 1025px) {
-  h1 {
-    margin-top: 0;
-  }
-
-  .container {
+  @media screen and (max-width: 1025px) {
     display: block;
   }
+}
 
-  .image {
+h1 {
+  @media screen and (max-width: 1025px) {
+    margin-top: 0;
+  }
+}
+
+.image {
+  @media screen and (max-width: 1025px) {
     text-align: center;
     margin-bottom: var(--default-spacing);
 
@@ -151,8 +153,10 @@ onMounted(() => {
       height: auto;
     }
   }
+}
 
-  .country {
+.country {
+  @media screen and (max-width: 1025px) {
     padding-bottom: 2rem;
   }
 }
@@ -171,6 +175,7 @@ onMounted(() => {
     flex-direction: column;
     gap: 1rem;
   }
+
   .full {
     color: var(--color-yellow);
   }

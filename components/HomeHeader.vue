@@ -41,19 +41,22 @@ const instagramLink =
 </template>
 
 <style scoped lang="scss">
+$breakpoint: 800px;
+
 .home-nav {
   z-index: var(--z-index-nav);
   position: absolute;
-  @media screen and (min-width: 800px) {
-    left: 215px;
-    right: 215px;
-  }
   top: var(--menu-height);
+
+  @media screen and (min-width: $breakpoint) {
+    left: 15%;
+    right: 15%;
+  }
 
   .flex {
     justify-content: space-between;
 
-    @media screen and (max-width: 800px) {
+    @media screen and (max-width: $breakpoint) {
       width: 100vw;
       justify-content: center;
     }
@@ -62,6 +65,10 @@ const instagramLink =
   .logo {
     margin-top: 8rem;
     height: 8rem;
+
+    @media screen and (max-width: $breakpoint) {
+      margin-top: 10%;
+    }
   }
 
   .menu-items {
@@ -70,7 +77,7 @@ const instagramLink =
     align-items: center;
     gap: 2rem;
 
-    @media screen and (max-width: 800px) {
+    @media screen and (max-width: $breakpoint) {
       display: none;
     }
 
@@ -80,23 +87,21 @@ const instagramLink =
       letter-spacing: 3px;
       color: var(--color-light-background);
 
-      &:hover {
+      &:hover,
+      svg:hover {
         color: var(--color-yellow);
+        fill: var(--color-yellow);
       }
 
       svg {
         fill: var(--color-light-background);
         max-height: 1.5rem;
-
-        &:hover {
-          fill: var(--color-yellow);
-        }
       }
     }
   }
 }
 
-@media screen and (min-width: 800px) {
+@media screen and (min-width: $breakpoint) {
   .burger-menu {
     display: none !important;
   }

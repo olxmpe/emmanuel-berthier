@@ -49,7 +49,7 @@ const handleMobileSlideChange = (swiper: any) => {
     </div>
   </div>
   <div class="container">
-    <div class="arrow desktop" @click="goToPreviousSlide()">
+    <div class="arrow desktop pointer" @click="goToPreviousSlide()">
       <ArrowLeft />
     </div>
     <Swiper
@@ -88,8 +88,8 @@ const handleMobileSlideChange = (swiper: any) => {
         </div>
       </SwiperSlide>
     </Swiper>
-    <div class="arrow desktop">
-      <ArrowRight @click="goToNextSlide()" />
+    <div class="arrow desktop pointer" @click="goToNextSlide()">
+      <ArrowRight />
     </div>
   </div>
 </template>
