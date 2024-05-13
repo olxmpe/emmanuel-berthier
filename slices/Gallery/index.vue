@@ -264,7 +264,7 @@ onMounted(() => {
   }
 
   &:not(.mobile-gallery) {
-    margin-left: -15rem;
+    margin-left: -10rem;
     padding-right: 10rem;
   }
 
