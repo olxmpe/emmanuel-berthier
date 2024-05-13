@@ -49,6 +49,7 @@ const localePath = useLocalePath();
           item.label
         }}</PrismicLink>
       </div>
+      <LanguageSwitcher />
     </div>
   </div>
 </template>

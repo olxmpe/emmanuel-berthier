@@ -17,6 +17,7 @@ const mainNavigationItems = navigation.value?.data.links.filter(
   <div class="navbar secondary">
     <div class="menu secondary">
       <div class="menu-items">
+        <LanguageSwitcher />
         <div v-for="item in topNavigationItems" :key="item.label ?? ''">
           <PrismicLink
             class="link"
