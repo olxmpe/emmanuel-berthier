@@ -1,6 +1,11 @@
 <script setup lang="ts">
-import { type Content, type DateField } from "@prismicio/client";
+import type { DateField } from "@prismicio/client";
+import { type Content } from "@prismicio/client";
 import { DateTime } from "luxon";
+
+const i18n = useI18n();
+const locale = i18n.locale;
+
 const props = defineProps(
   getSliceComponentProps<Content.ContentPageSlice>([
     "slice",
@@ -13,7 +18,9 @@ const props = defineProps(
 const countries = ref<string[]>([]);
 
 const formatDate = (date: string) => {
-  return DateTime.fromISO(date).setLocale("fr").toFormat("dd LLLL yyyy");
+  return DateTime.fromISO(date)
+    .setLocale(locale.value)
+    .toLocaleString(DateTime.DATE_FULL);
 };
 
 onMounted(() => {
@@ -66,25 +73,31 @@ onMounted(() => {
                 (item) => item.country === country
               )"
             >
-              <p>{{ item.description }}</p>
-              <p>
+              <PrismicLink
+                v-if="item.link"
+                class="link travel"
+                :field="item.link"
+                >{{ item.description }}</PrismicLink
+              >
+              <p v-if="!item.tba">
                 {{
                   $t("from_date_to_date", {
                     from: formatDate(item.start as string),
-                    end: formatDate(item.start as string),
+                    to: formatDate(item.end as string),
                   })
                 }}
                 -
-                <span v-if="item.remaining === 0" class="full">{{
+                <span v-if="item.remaining === 0" class="remaining">{{
                   $t("full")
                 }}</span>
-                <span v-else-if="item.remaining === 1" class="available"
+                <span v-else-if="item.remaining === 1" class="remaining"
                   >{{ $t("place_left", { count: item.remaining }) }}
                 </span>
-                <span v-else class="available">{{
+                <span v-else class="remaining">{{
                   $t("places_left", { count: item.remaining })
                 }}</span>
               </p>
+              <p v-else class="remaining">{{ $t("to_be_announced") }}</p>
             </div>
           </div>
         </div>
@@ -106,6 +119,11 @@ onMounted(() => {
     .logos {
       justify-content: center;
       gap: 5rem;
+
+      img {
+        max-height: 6rem;
+        width: auto;
+      }
     }
 
     .list {
@@ -134,6 +152,15 @@ onMounted(() => {
 
   @media screen and (max-width: 1025px) {
     display: block;
+
+    .logos {
+      justify-content: space-evenly;
+
+      img {
+        max-height: 5rem;
+        width: auto;
+      }
+    }
   }
 }
 
@@ -173,26 +200,15 @@ h1 {
   .list-items {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: 3rem;
   }
 
-  .full {
-    color: var(--color-yellow);
-  }
-
-  .available {
+  .remaining {
     color: var(--color-blue);
   }
 }
 
 .logos {
   padding: 80px 0;
-  justify-content: space-evenly;
-
-  img {
-    max-height: 5rem;
-    height: 100%;
-    width: auto;
-  }
 }
 </style>

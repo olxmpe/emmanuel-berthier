@@ -10,7 +10,11 @@ const topNavigationItems = navigation.value?.data.links.filter(
   (item) => !item.main_menu
 );
 const mainNavigationItems = navigation.value?.data.links.filter(
-  (item) => item.main_menu
+  (item) => item.main_menu && item.label?.toLowerCase() !== "home"
+);
+
+const homePage = navigation.value?.data.links.find(
+  (item) => item.label?.toLowerCase() === "home"
 );
 </script>
 <template>
@@ -41,16 +45,16 @@ const mainNavigationItems = navigation.value?.data.links.filter(
         </div>
       </div>
 
-      <RouterLink to="/">
+      <PrismicLink v-if="homePage" :field="homePage.link" class="link">
         <img class="logo" src="./../assets/logo-black.png" />
-      </RouterLink>
+      </PrismicLink>
     </div>
   </div>
   <div class="burger-menu">
     <div class="menu">
-      <RouterLink to="/">
+      <PrismicLink v-if="homePage" :field="homePage.link" class="link">
         <img class="logo" src="./../assets/logo-black.png" />
-      </RouterLink>
+      </PrismicLink>
       <div @click="isFullwidthNavOpen = !isFullwidthNavOpen">
         <CloseIcon :isActive="isFullwidthNavOpen" />
       </div>

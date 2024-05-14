@@ -465,6 +465,27 @@ export interface ContentPageSliceDefaultItem {
    * - **Documentation**: https://prismic.io/docs/field#number
    */
   remaining: prismic.NumberField;
+
+  /**
+   * lien field in *ContentPage → Items*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: content_page.items[].link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  link: prismic.LinkField;
+
+  /**
+   * To be announced field in *ContentPage → Items*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: content_page.items[].tba
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  tba: prismic.BooleanField;
 }
 
 /**

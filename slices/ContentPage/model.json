@@ -121,6 +121,24 @@
             "label": "Nombre de places restantes",
             "placeholder": ""
           }
+        },
+        "link": {
+          "type": "Link",
+          "config": {
+            "label": "lien",
+            "placeholder": "",
+            "allowTargetBlank": false,
+            "select": null
+          }
+        },
+        "tba": {
+          "type": "Boolean",
+          "config": {
+            "label": "To be announced",
+            "placeholder_false": "non",
+            "placeholder_true": "oui",
+            "default_value": false
+          }
         }
       }
     },

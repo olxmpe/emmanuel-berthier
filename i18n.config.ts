@@ -7,12 +7,14 @@ export default defineI18nConfig(() => ({
       full: "Full",
       places_left: "{count} places left",
       place_left: "{count} place left",
+      to_be_announced: "To be announced",
     },
     "fr-fr": {
       from_date_to_date: "Du {from} au {to}",
       full: "Complet",
       places_left: "{count} places restantes",
       place_left: "{count} place restante",
+      to_be_announced: "Plus d'informations à venir",
     },
   },
 }));

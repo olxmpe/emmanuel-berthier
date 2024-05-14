@@ -63,11 +63,9 @@ $breakpoint: 800px;
   }
 
   .logo {
-    margin-top: 8rem;
-    height: 8rem;
+    height: 8.5rem;
 
     @media screen and (max-width: $breakpoint) {
-      margin-top: 10%;
       position: fixed;
     }
   }

@@ -5,7 +5,7 @@ const navigation = useNavigation();
 const emits = defineEmits(["onClose"]);
 
 const mainNavigationItems = navigation.value?.data.links.filter(
-  (item) => item.main_menu
+  (item) => item.main_menu && item.label?.toLowerCase() !== "home"
 );
 
 const contactInfos = navigation.value?.data.links.filter(
@@ -15,14 +15,22 @@ const instagramLink =
   navigation.value?.data.links.find((item) => item.label === "instagram")
     ?.link ?? null;
 
+const homePage = navigation.value?.data.links.find(
+  (item) => item.label?.toLowerCase() === "home"
+);
+
 const localePath = useLocalePath();
 </script>
 <template>
   <div class="fullwidth-navigation">
     <div class="menu top">
-      <RouterLink to="/" v-if="$route.path === localePath('/')">
+      <PrismicLink
+        class="link"
+        v-if="homePage && $route.path === localePath('/')"
+        :field="homePage.link"
+      >
         <img class="logo" src="./../assets/logo-black.png" />
-      </RouterLink>
+      </PrismicLink>
     </div>
     <div class="menu main">
       <div v-for="item in mainNavigationItems">
@@ -44,12 +52,13 @@ const localePath = useLocalePath();
     </div>
 
     <div class="menu secondary">
-      <div v-for="item in contactInfos" :key="item.label ?? ''">
-        <PrismicLink class="link" :field="item.link">{{
-          item.label
-        }}</PrismicLink>
-      </div>
+      <PrismicLink class="link" :field="contactInfos![0].link">{{
+        contactInfos![0].label
+      }}</PrismicLink>
       <LanguageSwitcher />
+      <PrismicLink class="link" :field="contactInfos![0].link">{{
+        contactInfos![1].label
+      }}</PrismicLink>
     </div>
   </div>
 </template>
