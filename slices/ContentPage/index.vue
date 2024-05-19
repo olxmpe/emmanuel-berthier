@@ -110,6 +110,7 @@ onMounted(() => {
   @media screen and (min-width: 1025px) {
     display: flex;
     justify-content: center;
+    align-items: center;
     gap: 10rem;
 
     &.reversed {
