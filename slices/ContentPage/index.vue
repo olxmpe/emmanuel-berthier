@@ -63,16 +63,10 @@ onMounted(() => {
         /></PrismicLink>
       </div>
       <div v-if="slice.items">
-        <div v-for="country in countries" class="list">
-          <p class="country">
-            {{ country }}
-          </p>
+        <div class="list" v-if="slice.variation === 'default'">
+          <h2>{{ $t("next_start") }}</h2>
           <div class="list-items">
-            <div
-              v-for="item in slice.items.filter(
-                (item) => item.country === country
-              )"
-            >
+            <div v-for="item in slice.items">
               <PrismicLink
                 v-if="item.link"
                 class="link travel"
@@ -125,10 +119,6 @@ onMounted(() => {
         max-height: 6rem;
         width: auto;
       }
-    }
-
-    .list {
-      display: flex;
     }
 
     .text {
@@ -190,11 +180,23 @@ h1 {
 }
 
 .list {
+  display: flex;
   gap: var(--default-spacing);
   margin: 30px 0;
 
+  @media screen and (max-width: 800px) {
+    flex-direction: column;
+    margin-top: 20px;
+    gap: 0;
+
+    h2 {
+      margin-bottom: var(--default-spacing);
+    }
+  }
+
   .country {
     color: var(--color-yellow);
+    font-weight: 350;
     text-transform: uppercase;
   }
 
@@ -205,11 +207,15 @@ h1 {
   }
 
   .remaining {
-    color: var(--color-blue);
+    color: var(--color-yellow);
   }
 }
 
 .logos {
   padding: 80px 0;
+}
+
+.travel {
+  font-weight: 350;
 }
 </style>

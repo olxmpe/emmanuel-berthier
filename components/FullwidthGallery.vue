@@ -49,7 +49,7 @@ const handleMobileSlideChange = (swiper: any) => {
     </div>
   </div>
   <div class="container">
-    <div class="arrow desktop-gallery pointer" @click="goToPreviousSlide()">
+    <div class="arrow desktop pointer" @click="goToPreviousSlide()">
       <ArrowLeft />
     </div>
     <Swiper
@@ -59,7 +59,7 @@ const handleMobileSlideChange = (swiper: any) => {
       :pagination="false"
       :modules="[EffectFade]"
       :loop="true"
-      class="swiper desktop-gallery"
+      class="swiper desktop"
       :effect="'fade'"
       :initialSlide="props.activeIndex"
     >
@@ -77,7 +77,7 @@ const handleMobileSlideChange = (swiper: any) => {
       :pagination="false"
       :modules="[EffectFade]"
       :loop="true"
-      class="swiper mobile-gallery"
+      class="swiper mobile"
       :effect="'fade'"
       :initialSlide="props.activeIndex"
       @slideChange="handleMobileSlideChange"
@@ -89,7 +89,7 @@ const handleMobileSlideChange = (swiper: any) => {
         </div>
       </SwiperSlide>
     </Swiper>
-    <div class="arrow desktop-gallery pointer" @click="goToNextSlide()">
+    <div class="arrow desktop pointer" @click="goToNextSlide()">
       <ArrowRight />
     </div>
   </div>
@@ -123,13 +123,13 @@ const handleMobileSlideChange = (swiper: any) => {
     height: 80%;
     @media screen and (max-width: 800px) {
       width: 90%;
-      &.desktop-gallery {
+      &.desktop {
         display: none;
       }
     }
     @media screen and (min-width: 800px) {
       width: 60%;
-      &.mobile-gallery {
+      &.mobile {
         display: none;
       }
     }

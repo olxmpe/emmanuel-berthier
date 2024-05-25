@@ -53,11 +53,17 @@ h1 {
   }
 }
 
-h2,
 .title {
   font-family: var(--font-family-title);
   font-size: 2rem;
   color: var(--color-light-black);
+}
+
+h2 {
+  font-family: var(--font-family-title);
+  font-size: 1.2rem;
+  color: var(--color-light-black);
+  white-space: nowrap;
 }
 
 a {
@@ -109,18 +115,6 @@ font-semibold {
   }
 }
 
-.desktop-gallery {
-  @media screen and (max-width: 800px) {
-    display: none;
-  }
-}
-
-.mobile-gallery {
-  @media screen and (min-width: 800px) {
-    display: none;
-  }
-}
-
 .grid {
   z-index: 1000;
 }
@@ -165,7 +159,7 @@ font-semibold {
 }
 
 .mobile,
-.mobile-gallery {
+.mobile {
   &.header {
     padding-top: 100px;
     overflow: hidden;
