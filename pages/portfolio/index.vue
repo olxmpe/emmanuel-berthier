@@ -94,10 +94,11 @@ useHead({
   }
 
   .links {
+    max-width: 40%;
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
     text-transform: uppercase;
-    gap: 2rem;
+    gap: 1rem;
   }
 
   @media screen and (max-width: 1025px) {
@@ -130,6 +131,7 @@ useHead({
       position: absolute;
       z-index: var(--z-index-default);
       align-items: center;
+      justify-content: center;
     }
   }
 }
