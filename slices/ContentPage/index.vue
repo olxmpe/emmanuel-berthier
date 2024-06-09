@@ -73,7 +73,10 @@ onMounted(() => {
                 :field="item.link"
                 >{{ item.description }}</PrismicLink
               >
-              <p v-if="!item.tba">
+              <p v-if="!item.start || !item.end" class="remaining">
+                {{ item.custom_text }}
+              </p>
+              <p v-else>
                 {{
                   $t("from_date_to_date", {
                     from: formatDate(item.start as string),
@@ -91,7 +94,6 @@ onMounted(() => {
                   $t("places_left", { count: item.remaining })
                 }}</span>
               </p>
-              <p v-else class="remaining">{{ $t("to_be_announced") }}</p>
             </div>
           </div>
         </div>

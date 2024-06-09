@@ -1,7 +1,7 @@
 {
   "format": "custom",
   "id": "category",
-  "label": "Categorie",
+  "label": "Categorie de portfolio",
   "repeatable": true,
   "status": true,
   "json": {

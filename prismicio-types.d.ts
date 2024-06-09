@@ -7,11 +7,11 @@ type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 type CategoryDocumentDataSlicesSlice = GallerieSlice;
 
 /**
- * Content for Categorie documents
+ * Content for Categorie de portfolio documents
  */
 interface CategoryDocumentData {
   /**
-   * Display title field in *Categorie*
+   * Display title field in *Categorie de portfolio*
    *
    * - **Field Type**: Title
    * - **Placeholder**: *None*
@@ -22,7 +22,7 @@ interface CategoryDocumentData {
   display_title: prismic.TitleField;
 
   /**
-   * Menu image field in *Categorie*
+   * Menu image field in *Categorie de portfolio*
    *
    * - **Field Type**: Image
    * - **Placeholder**: *None*
@@ -33,7 +33,7 @@ interface CategoryDocumentData {
   image: prismic.ImageField<never>;
 
   /**
-   * Slice Zone field in *Categorie*
+   * Slice Zone field in *Categorie de portfolio*
    *
    * - **Field Type**: Slice Zone
    * - **Placeholder**: *None*
@@ -45,7 +45,7 @@ interface CategoryDocumentData {
 }
 
 /**
- * Categorie document from Prismic
+ * Categorie de portfolio document from Prismic
  *
  * - **API ID**: `category`
  * - **Repeatable**: `true`
@@ -144,17 +144,6 @@ interface PageDocumentData {
    * - **Documentation**: https://prismic.io/docs/field#rich-text-title
    */
   title: prismic.TitleField;
-
-  /**
-   * Parent field in *Page*
-   *
-   * - **Field Type**: Content Relationship
-   * - **Placeholder**: *None*
-   * - **API ID Path**: page.parent
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
-   */
-  parent: prismic.ContentRelationshipField<"page">;
 
   /**
    * Slice Zone field in *Page*
@@ -457,6 +446,16 @@ export interface ContentPageSliceDefaultItem {
   end: prismic.DateField;
 
   /**
+   * Date / Texte personnalisé field in *ContentPage → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: content_page.items[].custom_text
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  custom_text: prismic.KeyTextField;
+
+  /**
    * Nombre de places restantes field in *ContentPage → Items*
    *
    * - **Field Type**: Number
@@ -475,17 +474,6 @@ export interface ContentPageSliceDefaultItem {
    * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
    */
   link: prismic.LinkField;
-
-  /**
-   * To be announced field in *ContentPage → Items*
-   *
-   * - **Field Type**: Boolean
-   * - **Placeholder**: *None*
-   * - **Default Value**: false
-   * - **API ID Path**: content_page.items[].tba
-   * - **Documentation**: https://prismic.io/docs/field#boolean
-   */
-  tba: prismic.BooleanField;
 }
 
 /**
