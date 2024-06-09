@@ -12,10 +12,12 @@ const { data: page } = useAsyncData(`${locale.value}/portfolio`, () =>
 );
 
 onMounted(async () => {
-  categories.value = await client.getByType("category").then((response) => {
-    selectCategory(response.results[0]);
-    return response.results;
-  });
+  categories.value = await client
+    .getByType("category", { lang: locale.value })
+    .then((response) => {
+      selectCategory(response.results[0]);
+      return response.results;
+    });
 });
 
 const selectCategory = (category: any) => {
@@ -47,7 +49,7 @@ useHead({
         :to="$route.path + '/' + category.uid"
         @mouseover="selectCategory(category)"
         :key="category.id"
-        >{{ category.uid }}</RouterLink
+        >{{ category.data.display_title[0].text }}</RouterLink
       >
     </div>
 
