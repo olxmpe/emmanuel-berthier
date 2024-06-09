@@ -47,7 +47,7 @@ useHead({
         :to="$route.path + '/' + category.uid"
         @mouseover="selectCategory(category)"
         :key="category.id"
-        >{{ category.uid }}</RouterLink
+        >{{ category.data.display_title[0].text }}</RouterLink
       >
     </div>
 
