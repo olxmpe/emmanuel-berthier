@@ -94,7 +94,15 @@ useHead({
   }
 
   .links {
-    max-width: 40%;
+    @media screen and (max-width: 1025px) {
+      max-width: 50%;
+    }
+
+    @media screen and (min-width: 1025px) {
+      max-width: 40%;
+    }
+
+    max-width: 45%;
     display: flex;
     flex-wrap: wrap;
     text-transform: uppercase;
