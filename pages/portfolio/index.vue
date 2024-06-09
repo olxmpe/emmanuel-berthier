@@ -12,10 +12,12 @@ const { data: page } = useAsyncData(`${locale.value}/portfolio`, () =>
 );
 
 onMounted(async () => {
-  categories.value = await client.getByType("category").then((response) => {
-    selectCategory(response.results[0]);
-    return response.results;
-  });
+  categories.value = await client
+    .getByType("category", { lang: locale.value })
+    .then((response) => {
+      selectCategory(response.results[0]);
+      return response.results;
+    });
 });
 
 const selectCategory = (category: any) => {
