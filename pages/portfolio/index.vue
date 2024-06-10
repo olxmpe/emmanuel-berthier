@@ -98,6 +98,9 @@ useHead({
   .links {
     @media screen and (max-width: 1025px) {
       max-width: 50%;
+      .title {
+        font-size: 20px;
+      }
     }
 
     @media screen and (min-width: 1025px) {
