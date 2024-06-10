@@ -8,15 +8,15 @@
     "Main": {
       "uid": {
         "config": {
-          "label": "UID",
-          "placeholder": "URL"
+          "label": "Chemin d'URL",
+          "placeholder": ""
         },
         "type": "UID"
       },
       "display_title": {
         "type": "StructuredText",
         "config": {
-          "label": "Display title",
+          "label": "Titre affiché",
           "placeholder": "",
           "allowTargetBlank": true,
           "single": "heading1"
@@ -25,7 +25,7 @@
       "image": {
         "type": "Image",
         "config": {
-          "label": "Menu image",
+          "label": "Image mise en avant",
           "constraint": {},
           "thumbnails": []
         }
