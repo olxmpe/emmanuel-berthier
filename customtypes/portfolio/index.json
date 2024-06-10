@@ -15,7 +15,7 @@
       "title": {
         "type": "StructuredText",
         "config": {
-          "label": "title",
+          "label": "Titre SEO",
           "placeholder": "",
           "allowTargetBlank": true,
           "single": "heading1"
@@ -24,7 +24,7 @@
       "featured_mobile_image_first": {
         "type": "Image",
         "config": {
-          "label": "Featured mobile image first",
+          "label": "Image mise en avant - mobile - 1",
           "constraint": {},
           "thumbnails": []
         }
@@ -32,7 +32,7 @@
       "featured_mobile_image_second": {
         "type": "Image",
         "config": {
-          "label": "featured mobile image second",
+          "label": "Image mise en avant - mobile - 2",
           "constraint": {},
           "thumbnails": []
         }

@@ -11,7 +11,7 @@ type CategoryDocumentDataSlicesSlice = GallerieSlice;
  */
 interface CategoryDocumentData {
   /**
-   * Display title field in *Categorie de portfolio*
+   * Titre affiché field in *Categorie de portfolio*
    *
    * - **Field Type**: Title
    * - **Placeholder**: *None*
@@ -22,7 +22,7 @@ interface CategoryDocumentData {
   display_title: prismic.TitleField;
 
   /**
-   * Menu image field in *Categorie de portfolio*
+   * Image mise en avant field in *Categorie de portfolio*
    *
    * - **Field Type**: Image
    * - **Placeholder**: *None*
@@ -176,7 +176,7 @@ type PortfolioDocumentDataSlicesSlice = never;
  */
 interface PortfolioDocumentData {
   /**
-   * title field in *Portfolio*
+   * Titre SEO field in *Portfolio*
    *
    * - **Field Type**: Title
    * - **Placeholder**: *None*
@@ -187,7 +187,7 @@ interface PortfolioDocumentData {
   title: prismic.TitleField;
 
   /**
-   * Featured mobile image first field in *Portfolio*
+   * Image mise en avant - mobile - 1 field in *Portfolio*
    *
    * - **Field Type**: Image
    * - **Placeholder**: *None*
@@ -198,7 +198,7 @@ interface PortfolioDocumentData {
   featured_mobile_image_first: prismic.ImageField<never>;
 
   /**
-   * featured mobile image second field in *Portfolio*
+   * Image mise en avant - mobile - 2 field in *Portfolio*
    *
    * - **Field Type**: Image
    * - **Placeholder**: *None*
