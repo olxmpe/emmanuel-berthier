@@ -101,7 +101,7 @@ useHead({
     }
 
     @media screen and (min-width: 1025px) {
-      max-width: 40%;
+      max-width: 30%;
     }
 
     max-width: 45%;
@@ -126,12 +126,12 @@ useHead({
           &.first {
             position: absolute;
             top: 25%;
-            right: 40%;
+            right: 50%;
           }
           &.second {
             position: absolute;
             top: 80%;
-            left: 35%;
+            left: 50%;
           }
         }
       }
