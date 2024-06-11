@@ -12,16 +12,16 @@ defineProps(
   ])
 );
 
+const { locale } = useI18n();
 const $route = useRoute();
 const $router = useRouter();
-
-const isFullWidthGalleryOpen = ref(false);
-const galleryActiveIndex = ref<number>(0);
+const client = prismic.createClient("emmanuel-berthier");
 
 const currentCategoryUID = ref<string>($route.params.uid.toString());
-const nextCategory = ref<string | null>(null);
 
-const client = prismic.createClient("emmanuel-berthier");
+const isFullWidthGalleryOpen = ref(false);
+
+const galleryActiveIndex = ref<number>(0);
 const horizontal = ref<HTMLDivElement | null>(null);
 
 const onWheel = (event: WheelEvent) => {
@@ -33,14 +33,21 @@ const onWheel = (event: WheelEvent) => {
 };
 
 const { data: categories } = useAsyncData("$categories", () =>
-  client.getAllByType("category")
+  client.getAllByType("category", { lang: locale.value })
+);
+
+const { data: currentCategory } = useAsyncData("$category", () =>
+  client.getByUID("category", currentCategoryUID.value, {
+    lang: locale.value,
+  })
 );
 
 const navigateToNextCategory = (categoryUID: string) => {
-  nextCategory.value = getNextCategory(categoryUID);
+  const nextCategory = getNextCategory(categoryUID);
 
   if (nextCategory) {
-    $router.replace(nextCategory.value!);
+    $router.replace(nextCategory.uid);
+    currentCategory.value = nextCategory;
   }
 };
 
@@ -51,8 +58,8 @@ const getNextCategory = (categoryUID: string) => {
     );
 
     return currentIndex === categories.value.length - 1
-      ? categories.value[0].uid
-      : categories.value[currentIndex + 1].uid;
+      ? categories.value[0]
+      : categories.value[currentIndex + 1];
   }
   return null;
 };
@@ -65,6 +72,15 @@ const openFullwithGallery = (index: number) => {
 onMounted(() => {
   getNextCategory(currentCategoryUID.value);
 });
+
+watch(
+  () => currentCategory.value?.alternate_languages,
+  () => {
+    useAlternateLanguages().value =
+      currentCategory.value?.alternate_languages || [];
+  },
+  { immediate: true }
+);
 </script>
 
 <template>
@@ -138,18 +154,23 @@ onMounted(() => {
             :style="{
               maxHeight:
                 index === 0 ? 'calc(100% - (var(--menu-height)* 4))' : 'auto',
-              height: Math.floor(Math.random() * 70) + 30 + '%',
+              height:
+                index === 0
+                  ? 'calc(100% - (var(--menu-height)* 4))'
+                  : Math.floor(Math.random() * 70) + 30 + '%',
             }"
           />
           <h1 class="desktop category" v-if="!isFullWidthGalleryOpen">
-            {{ currentCategoryUID }}
+            {{ currentCategory?.data.display_title[0]!.text }}
           </h1>
           <div
             class="flex next-category link"
             @click="navigateToNextCategory(currentCategoryUID)"
           >
             <h1>
-              {{ getNextCategory(currentCategoryUID) }}
+              {{
+                getNextCategory(currentCategoryUID)?.data.display_title[0]?.text
+              }}
             </h1>
             <ArrowRight />
           </div>
@@ -175,7 +196,7 @@ onMounted(() => {
         @click="navigateToNextCategory(currentCategoryUID)"
       >
         <h1>
-          {{ getNextCategory(currentCategoryUID) }}
+          {{ getNextCategory(currentCategoryUID)?.data.display_title[0]?.text }}
         </h1>
         <ArrowRight class="non-resized" />
       </div>
