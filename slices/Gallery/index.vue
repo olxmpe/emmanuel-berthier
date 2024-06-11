@@ -140,7 +140,7 @@ watch(
   <div v-else class="default">
     <div class="mobile bounded large">
       <div class="text">
-        <h1>{{ currentCategoryUID }}</h1>
+        <h1>{{ currentCategory?.data.display_title[0]!.text }}</h1>
       </div>
     </div>
     <div class="desktop">
