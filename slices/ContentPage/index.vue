@@ -3,10 +3,9 @@ import type { DateField } from "@prismicio/client";
 import { type Content } from "@prismicio/client";
 import { DateTime } from "luxon";
 
-const i18n = useI18n();
-const locale = i18n.locale;
+const { locale } = useI18n();
 
-const props = defineProps(
+defineProps(
   getSliceComponentProps<Content.ContentPageSlice>([
     "slice",
     "index",
@@ -15,19 +14,11 @@ const props = defineProps(
   ])
 );
 
-const countries = ref<string[]>([]);
-
 const formatDate = (date: string) => {
   return DateTime.fromISO(date)
     .setLocale(locale.value)
     .toLocaleString(DateTime.DATE_FULL);
 };
-
-onMounted(() => {
-  countries.value = [
-    ...new Set(props.slice.items.map((item) => item.country as string)),
-  ];
-});
 </script>
 
 <template>
