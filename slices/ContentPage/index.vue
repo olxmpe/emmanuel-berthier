@@ -30,17 +30,21 @@ const formatDate = (date: string) => {
     class="container bounded"
     :class="{ reversed: slice.variation === 'default' }"
   >
-    <h1 v-if="slice.variation === 'imageLeft'" class="mobile header">
-      {{ slice.primary.display_title }}
-    </h1>
+    <PrismicRichText
+      :field="slice.primary.display_title"
+      v-if="slice.variation === 'imageLeft'"
+      class="mobile header"
+    />
 
     <div class="image" :class="{ desktop: slice.variation === 'default' }">
       <PrismicImage :field="slice.primary.image" />
     </div>
     <div class="text">
-      <h1 :class="{ desktop: slice.variation === 'imageLeft' }">
-        {{ slice.primary.display_title }}
-      </h1>
+      <PrismicRichText
+        :field="slice.primary.display_title"
+        :class="{ desktop: slice.variation === 'imageLeft' }"
+      />
+
       <PrismicRichText :field="slice.primary.text_block" />
       <div class="flex logos" v-if="slice.variation === 'default'">
         <PrismicLink :field="slice.primary.logo_left_link"

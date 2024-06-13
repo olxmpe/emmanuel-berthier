@@ -3,11 +3,6 @@
 		"__TYPE__": "SharedSliceContent",
 		"variation": "default",
 		"primary": {
-			"display_title": {
-				"__TYPE__": "FieldContent",
-				"value": "maybe",
-				"type": "Text"
-			},
 			"text_block": {
 				"__TYPE__": "StructuredTextContent",
 				"value": [
@@ -131,6 +126,17 @@
 					"__TYPE__": "ExternalLink",
 					"url": "http://twitter.com"
 				}
+			},
+			"display_title": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "heading1",
+						"content": {
+							"text": "Check"
+						}
+					}
+				]
 			}
 		},
 		"items": [
@@ -203,11 +209,6 @@
 		"__TYPE__": "SharedSliceContent",
 		"variation": "imageLeft",
 		"primary": {
-			"display_title": {
-				"__TYPE__": "FieldContent",
-				"value": "attached",
-				"type": "Text"
-			},
 			"text_block": {
 				"__TYPE__": "StructuredTextContent",
 				"value": [
@@ -241,6 +242,17 @@
 				"alt": null,
 				"__TYPE__": "ImageContent",
 				"thumbnails": {}
+			},
+			"display_title": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "heading1",
+						"content": {
+							"text": "Cattle"
+						}
+					}
+				]
 			}
 		},
 		"items": [

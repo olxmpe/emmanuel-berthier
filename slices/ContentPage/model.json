@@ -12,19 +12,21 @@
       "description": "Default",
       "imageUrl": "",
       "primary": {
+        "display_title": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Titre affiché",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "heading1"
+          }
+        },
         "image": {
           "type": "Image",
           "config": {
             "label": "Photo",
             "constraint": {},
             "thumbnails": []
-          }
-        },
-        "display_title": {
-          "type": "Text",
-          "config": {
-            "label": "Titre",
-            "placeholder": ""
           }
         },
         "text_block": {
@@ -148,19 +150,21 @@
       "description": "Default",
       "imageUrl": "",
       "primary": {
+        "display_title": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Titre affiché",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "heading1"
+          }
+        },
         "image": {
           "type": "Image",
           "config": {
             "label": "Photo",
             "constraint": {},
             "thumbnails": []
-          }
-        },
-        "display_title": {
-          "type": "Text",
-          "config": {
-            "label": "Titre",
-            "placeholder": ""
           }
         },
         "text_block": {

@@ -135,17 +135,6 @@ type PageDocumentDataSlicesSlice = GallerieSlice | ContentPageSlice | HeroSlice;
  */
 interface PageDocumentData {
   /**
-   * Titre SEO field in *Page*
-   *
-   * - **Field Type**: Title
-   * - **Placeholder**: *None*
-   * - **API ID Path**: page.title
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
-   */
-  title: prismic.TitleField;
-
-  /**
    * Slice Zone field in *Page*
    *
    * - **Field Type**: Slice Zone
@@ -311,6 +300,16 @@ export type AllDocumentTypes =
  */
 export interface ContentPageSliceDefaultPrimary {
   /**
+   * Titre affiché field in *ContentPage → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: content_page.primary.display_title
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  display_title: prismic.RichTextField;
+
+  /**
    * Photo field in *ContentPage → Primary*
    *
    * - **Field Type**: Image
@@ -319,16 +318,6 @@ export interface ContentPageSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/field#image
    */
   image: prismic.ImageField<never>;
-
-  /**
-   * Titre field in *ContentPage → Primary*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: content_page.primary.display_title
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  display_title: prismic.KeyTextField;
 
   /**
    * Texte field in *ContentPage → Primary*
@@ -494,6 +483,16 @@ export type ContentPageSliceDefault = prismic.SharedSliceVariation<
  */
 export interface ContentPageSliceImageLeftPrimary {
   /**
+   * Titre affiché field in *ContentPage → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: content_page.primary.display_title
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  display_title: prismic.RichTextField;
+
+  /**
    * Photo field in *ContentPage → Primary*
    *
    * - **Field Type**: Image
@@ -502,16 +501,6 @@ export interface ContentPageSliceImageLeftPrimary {
    * - **Documentation**: https://prismic.io/docs/field#image
    */
   image: prismic.ImageField<never>;
-
-  /**
-   * Titre field in *ContentPage → Primary*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: content_page.primary.display_title
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  display_title: prismic.KeyTextField;
 
   /**
    * Texte field in *ContentPage → Primary*
