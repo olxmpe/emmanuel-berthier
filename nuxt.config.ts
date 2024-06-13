@@ -35,7 +35,8 @@ export default defineNuxtConfig({
 
   prismic: {
     endpoint: "emmanuel-berthier",
-    preview: "/api/preview",
+    preview: "/preview",
+    linkResolver: "~/app/prismic/linkResolver.ts",
     clientConfig: {
       routes: [
         {
