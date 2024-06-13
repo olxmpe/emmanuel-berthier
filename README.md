@@ -9,4 +9,6 @@ It was built using Nuxt 3 and Prismic for content management and delivery, marki
 - **Prismic **: Use of Prismic for flexible content management and easy updates without having to go into the code.
 - **Responsive Design**: Ensuring a seamless experience across various devices.
 
+## Visit website
+
 App is live on [www.emmanuelberthier.com](www.emmanuelberthier.com) 
