@@ -16,7 +16,7 @@
       "title": {
         "type": "Text",
         "config": {
-          "label": "Page title",
+          "label": "Titre",
           "placeholder": ""
         }
       },

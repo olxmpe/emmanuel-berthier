@@ -8,17 +8,16 @@
     "Main": {
       "uid": {
         "config": {
-          "label": "UID"
+          "label": "Chemin d'URL",
+          "placeholder": ""
         },
         "type": "UID"
       },
       "title": {
-        "type": "StructuredText",
+        "type": "Text",
         "config": {
-          "label": "Titre SEO",
-          "placeholder": "",
-          "allowTargetBlank": true,
-          "single": "heading1"
+          "label": "Titre",
+          "placeholder": ""
         }
       },
       "featured_mobile_image_first": {

@@ -135,7 +135,7 @@ type PageDocumentDataSlicesSlice = GallerieSlice | ContentPageSlice | HeroSlice;
  */
 interface PageDocumentData {
   /**
-   * Page title field in *Page*
+   * Titre field in *Page*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
@@ -176,15 +176,15 @@ type PortfolioDocumentDataSlicesSlice = never;
  */
 interface PortfolioDocumentData {
   /**
-   * Titre SEO field in *Portfolio*
+   * Titre field in *Portfolio*
    *
-   * - **Field Type**: Title
+   * - **Field Type**: Text
    * - **Placeholder**: *None*
    * - **API ID Path**: portfolio.title
    * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
    */
-  title: prismic.TitleField;
+  title: prismic.KeyTextField;
 
   /**
    * Image mise en avant - mobile - 1 field in *Portfolio*
