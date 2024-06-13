@@ -3,6 +3,7 @@ import InstagramIcon from "~/assets/InstagramIcon.vue";
 import CloseIcon from "./CloseIcon.vue";
 
 const navigation = useNavigation();
+const settings = useSettings();
 
 const isFullwidthNavOpen = ref(false);
 
@@ -46,14 +47,22 @@ const homePage = navigation.value?.data.links.find(
       </div>
 
       <PrismicLink v-if="homePage" :field="homePage.link" class="link">
-        <img class="logo" src="./../assets/logo-black.png" />
+        <PrismicImage
+          v-if="settings"
+          :field="settings.data.dark_cropped_logo"
+          class="logo"
+        />
       </PrismicLink>
     </div>
   </div>
   <div class="burger-menu">
     <div class="menu">
       <PrismicLink v-if="homePage" :field="homePage.link" class="link">
-        <img class="logo" src="./../assets/logo-black.png" />
+        <PrismicImage
+          v-if="settings"
+          :field="settings.data.dark_cropped_logo"
+          class="logo"
+        />
       </PrismicLink>
       <div @click="isFullwidthNavOpen = !isFullwidthNavOpen">
         <CloseIcon :isActive="isFullwidthNavOpen" />
@@ -95,8 +104,9 @@ const homePage = navigation.value?.data.links.find(
       display: flex;
       gap: 3rem;
     }
-    .logo {
-      height: 2rem;
+    .logo,
+    img {
+      height: 3rem;
     }
 
     svg {

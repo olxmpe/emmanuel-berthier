@@ -3,6 +3,7 @@ import InstagramIcon from "~/assets/InstagramIcon.vue";
 import CloseIcon from "./CloseIcon.vue";
 
 const navigation = useNavigation();
+const settings = useSettings();
 const isFullwidthNavOpen = ref(false);
 
 const menuItems = navigation.value?.data.links.filter(
@@ -17,7 +18,11 @@ const instagramLink =
 <template>
   <div class="home-nav">
     <div class="flex">
-      <img class="logo" src="./../assets/logo-full-grey.png" />
+      <PrismicImage
+        v-if="settings"
+        :field="settings.data.light_logo"
+        class="logo"
+      />
       <div class="menu-items">
         <div v-for="item in menuItems">
           <PrismicLink :field="item.link">{{ item.label }}</PrismicLink>
@@ -63,7 +68,7 @@ $breakpoint: 800px;
   }
 
   .logo {
-    height: 8.5rem;
+    height: 7rem;
 
     @media screen and (max-width: $breakpoint) {
       position: fixed;

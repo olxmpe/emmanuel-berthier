@@ -3,6 +3,7 @@ import InstagramIcon from "~/assets/InstagramIcon.vue";
 const navigation = useNavigation();
 
 const emits = defineEmits(["onClose"]);
+const settings = useSettings();
 
 const mainNavigationItems = navigation.value?.data.links.filter(
   (item) => item.main_menu && item.label?.toLowerCase() !== "home"
@@ -29,7 +30,11 @@ const localePath = useLocalePath();
         v-if="homePage && $route.path === localePath('/')"
         :field="homePage.link"
       >
-        <img class="logo" src="./../assets/logo-black.png" />
+        <PrismicImage
+          v-if="settings"
+          :field="settings.data.dark_cropped_logo"
+          class="logo"
+        />
       </PrismicLink>
     </div>
     <div class="menu main">
@@ -86,7 +91,7 @@ const localePath = useLocalePath();
       padding: 2rem 1.5rem;
 
       .logo {
-        height: 1rem;
+        height: 1.5rem;
       }
     }
 
