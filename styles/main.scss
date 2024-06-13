@@ -121,7 +121,8 @@ font-semibold {
 
 .bounded {
   @media screen and (max-width: 1025px) {
-    padding: var(--default-spacing) 10%;
+    padding: 0 10%;
+    padding-bottom: var(--default-spacing);
   }
 
   @media screen and (min-width: 1025px) {
@@ -163,8 +164,9 @@ font-semibold {
   &.header {
     padding-top: 100px;
     overflow: hidden;
+    max-width: 100%;
 
-    &:not(h1) {
+    & > img {
       width: 100vw;
       height: 40vh;
       object-fit: cover;
