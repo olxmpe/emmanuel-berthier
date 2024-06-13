@@ -20,7 +20,7 @@ watch(
 useHead({
   title: computed(
     () =>
-      `${prismic.asText(page.value?.data.title)} | ${prismic.asText(settings.value?.data.siteTitle)}`
+      `${page.value?.data.title} | ${prismic.asText(settings.value?.data.siteTitle)}`
   ),
 });
 </script>

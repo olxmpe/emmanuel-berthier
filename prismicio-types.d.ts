@@ -135,6 +135,17 @@ type PageDocumentDataSlicesSlice = GallerieSlice | ContentPageSlice | HeroSlice;
  */
 interface PageDocumentData {
   /**
+   * Page title field in *Page*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: page.title
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
    * Slice Zone field in *Page*
    *
    * - **Field Type**: Slice Zone
