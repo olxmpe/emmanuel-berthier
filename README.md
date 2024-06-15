@@ -6,7 +6,7 @@ It was built using Nuxt 3 and Prismic for content management and delivery, marki
 ## Features
 
 - **Nuxt 3**: Leveraging the power of Nuxt 3 for a modern, performant, and scalable front-end.
-- **Prismic **: Use of Prismic for flexible content management and easy updates without having to go into the code.
+- **Prismic**: Use of Prismic for flexible content management and easy updates without having to go into the code.
 - **Responsive Design**: Ensuring a seamless experience across various devices.
 
 ## Visit website
