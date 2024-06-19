@@ -21,11 +21,12 @@ watch(
   { immediate: true }
 );
 
-useHead({
+useSeoMeta({
   title: computed(
     () =>
       `${page.value?.data.title} | ${prismic.asText(settings.value?.data.siteTitle)}`
   ),
+  description: page.value?.data.meta_description,
 });
 </script>
 
